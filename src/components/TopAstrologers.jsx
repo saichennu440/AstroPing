@@ -74,6 +74,7 @@ export default function TopAstrologers() {
   }
 
   return (
+    
     <section className="top-astrologers section">
       <div className="container">
         <div className="section-header spaced">
@@ -83,6 +84,7 @@ export default function TopAstrologers() {
 
         <div className="slider-wrapper">
           <button className="slider-arrow left" onClick={() => scroll('left')}>‹</button>
+         
           <div className="astrologers-slider" ref={slider}>
             {astrologers.map((a, i) => (
               <div key={i} className="astrologer-card">
@@ -128,12 +130,16 @@ export default function TopAstrologers() {
                     </div>
                   </div>
                 </div>
+               
               </div>
             ))}
           </div>
+          
           <button className="slider-arrow right" onClick={() => scroll('right')}>›</button>
         </div>
+     
       </div>
     </section>
+    
   )
 }
