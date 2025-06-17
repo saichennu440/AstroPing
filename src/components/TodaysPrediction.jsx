@@ -1,19 +1,34 @@
-import './TodaysPrediction.css'
+// src/components/TodaysPrediction/TodaysPrediction.jsx
+import React from 'react';
+import './TodaysPrediction.css';
+
+import aries from '/assets/aries.png';
+import taurus from '/assets/Group 84.png';
+import gemini from '/assets/Group 85.png';
+import cancer from '/assets/Group 87.png';
+import leo from '/assets/Leo Horoscope.png';
+import virgo from '/assets/Pisces Horoscope.png';
+import libra from '/assets/Scorpio Horoscope.png';
+import scorpio from '/assets/Virgo Horoscope.png';
+import sagittarius from '/assets/Leo Horoscope.png';
+import capricorn from '/assets/Capricorn Horoscope.png';
+import aquarius from '/assets/Aquarius Horoscope.png';
+import pisces from '/assets/pisces.png';
 
 const predictions = [
-  { image: '/assets/aries.png',      sign: 'Aries' },
-  { image: '/assets/Group 84.png',     sign: 'Taurus' },
-  { image: '/assets/Group 85.png',     sign: 'Gemini' },
-  { image: '/assets/Group 87.png',     sign: 'Cancer' },
-  { image: '/assets/Leo Horoscope.png',        sign: 'Leo' },
-  { image: '/assets/Pisces Horoscope.png',      sign: 'Virgo' },
-  { image: '/assets/Scorpio Horoscope.png',      sign: 'Libra' },
-  { image: '/assets/Virgo Horoscope.png',    sign: 'Scorpio' },
-  { image: '/assets/Sagittarius Horoscope.png',sign: 'Sagittarius' },
-  { image: '/assets/Capricorn Horoscope.png',  sign: 'Capricorn' },
-  { image: '/assets/Aquarius Horoscope.png',   sign: 'Aquarius' },
-  { image: '/assets/pisces.png',     sign: 'Pisces' }
-]
+  { image: aries,      sign: 'Aries' },
+  { image: taurus,     sign: 'Taurus' },
+  { image: gemini,     sign: 'Gemini' },
+  { image: cancer,     sign: 'Cancer' },
+  { image: leo,        sign: 'Leo' },
+  { image: virgo,      sign: 'Virgo' },
+  { image: libra,      sign: 'Libra' },
+  { image: scorpio,    sign: 'Scorpio' },
+  { image: sagittarius,sign: 'Sagittarius' },
+  { image: capricorn,  sign: 'Capricorn' },
+  { image: aquarius,   sign: 'Aquarius' },
+  { image: pisces,     sign: 'Pisces' }
+];
 
 export default function TodaysPrediction() {
   return (
@@ -26,11 +41,11 @@ export default function TodaysPrediction() {
               <div className="prediction-icon">
                 <img src={p.image} alt={p.sign} />
               </div>
-              <p>{p.sign}</p>
+              <p className="prediction-label">{p.sign}</p>
             </div>
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }
