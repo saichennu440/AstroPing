@@ -1,0 +1,447 @@
+.top-astrologers {
+  padding: 50px 0;
+}
+
+/* Section header with View All on right */
+.section-header.spaced {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.section-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #222;
+  margin-top:40px;
+}
+
+.view-all {
+  font-size: 0.95rem;
+  color: #FF6B35;
+  border: 1px solid #FF6B35;
+  padding: 6px 12px;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.view-all:hover {
+  background: rgba(255,107,53,0.1);
+}
+
+/* slider wrapper */
+.slider-wrapper {
+  position: relative;
+}
+
+.astrologers-slider {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 8px;
+}
+
+.astrologers-slider::-webkit-scrollbar {
+  display: none;
+}
+
+/* each card */
+.astrologer-card {
+  flex: 0 0 280px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  scroll-snap-align: start;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* --- Card Header: avatar + follow --- */
+.astrologer-card .card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.astrologer-image {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.astrologer-image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.status-indicator {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
+
+.status-indicator.online { 
+  background: #4CAF50; 
+}
+
+.status-indicator.offline { 
+  background: #ccc; 
+}
+
+.btn.follow-btn {
+  background: transparent;
+  border: 1px solid #FF6B35;
+  color: #FF6B35;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+/* --- Card Body: details + price/actions --- */
+.astrologer-card .card-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* left info (name, expertise, exp, rating) */
+.info-left {
+  flex: 1;
+  margin-right: 24px;
+}
+
+.info-left h3 {
+  margin: 0 0 4px;
+  font-size: 1.1rem;
+  color: #222;
+}
+
+.info-left .expertise,
+.info-left .experience {
+  margin: 2px 0;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+}
+
+.star {
+  font-size: 1rem;
+  color: #ddd;
+}
+
+.star.filled {
+  color: #FFC107;
+}
+
+.rating-text {
+  margin-left: 8px;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+/* right info (price + buttons) */
+.info-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.price {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.btn.small {
+  font-size: 0.85rem;
+  padding: 6px 12px;
+  border-radius: 16px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.btn.primary.small {
+  background: #FF6B35;
+  color: #fff;
+  border-color: #FF6B35;
+}
+
+.btn.outline.small {
+  background: transparent;
+  color: #FF6B35;
+  border-color: #FF6B35;
+}
+
+/* slider arrows */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.9);
+  border: none;
+  font-size: 2rem;
+  padding: 0 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  z-index: 2;
+}
+
+.slider-arrow.left {
+  left: -50px;
+}
+
+.slider-arrow.right {
+  right: -50px;
+}
+
+/* TABLET RESPONSIVE - 1024px and below */
+@media (max-width: 1024px) {
+  .top-astrologers {
+    padding: 40px 0;
+  }
+  
+  .section-title {
+    font-size: 1.6rem;
+  }
+  
+  .astrologers-slider {
+    gap: 20px;
+  }
+  
+  .astrologer-card {
+    flex: 0 0 260px;
+    padding: 20px;
+  }
+  
+  .slider-arrow {
+    left: -40px;
+  }
+  
+  .slider-arrow.right {
+    right: -40px;
+  }
+}
+
+/* MOBILE LANDSCAPE - 768px and below */
+@media (max-width: 768px) {
+  .top-astrologers {
+    padding: 35px 0;
+  }
+  
+  .section-header.spaced {
+    margin-bottom: 20px;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .view-all {
+    font-size: 0.9rem;
+    padding: 5px 10px;
+  }
+  
+  .astrologers-slider {
+    gap: 16px;
+    padding-bottom: 12px;
+  }
+  
+  .astrologer-card {
+    flex: 0 0 240px;
+    padding: 18px;
+  }
+  
+  .astrologer-image {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .status-indicator {
+    width: 12px;
+    height: 12px;
+    bottom: 2px;
+    right: 2px;
+  }
+  
+  .info-left {
+    margin-right: 16px;
+  }
+  
+  .info-left h3 {
+    font-size: 1rem;
+  }
+  
+  .info-left .expertise,
+  .info-left .experience {
+    font-size: 0.85rem;
+  }
+  
+  .slider-arrow {
+    display: none;
+  }
+}
+
+/* MOBILE PORTRAIT - 480px and below */
+@media (max-width: 480px) {
+  .top-astrologers {
+    padding: 30px 0;
+  }
+  
+  .section-header.spaced {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  
+  .section-title {
+    font-size: 1.4rem;
+  }
+  
+  .view-all {
+    align-self: flex-end;
+    font-size: 0.85rem;
+    padding: 4px 8px;
+  }
+  
+  .astrologers-slider {
+    gap: 12px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  
+  .astrologer-card {
+    flex: 0 0 220px;
+    padding: 16px;
+  }
+  
+  .astrologer-card .card-header {
+    margin-bottom: 12px;
+  }
+  
+  .astrologer-image {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .btn.follow-btn {
+    font-size: 0.8rem;
+    padding: 3px 8px;
+  }
+  
+  .astrologer-card .card-body {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .info-left {
+    margin-right: 0;
+    width: 100%;
+  }
+  
+  .info-left h3 {
+    font-size: 0.95rem;
+  }
+  
+  .info-left .expertise,
+  .info-left .experience {
+    font-size: 0.8rem;
+  }
+  
+  .rating {
+    margin-top: 6px;
+  }
+  
+  .star {
+    font-size: 0.9rem;
+  }
+  
+  .rating-text {
+    font-size: 0.8rem;
+  }
+  
+  .info-right {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .price {
+    font-size: 0.9rem;
+  }
+  
+  .action-buttons {
+    gap: 6px;
+  }
+  
+  .btn.small {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+  }
+}
+
+/* EXTRA SMALL MOBILE - 360px and below */
+@media (max-width: 360px) {
+  .astrologer-card {
+    flex: 0 0 200px;
+    padding: 14px;
+  }
+  
+  .section-title {
+    font-size: 1.3rem;
+  }
+  
+  .astrologer-image {
+    width: 55px;
+    height: 55px;
+  }
+  
+  .info-left h3 {
+    font-size: 0.9rem;
+  }
+  
+  .info-left .expertise,
+  .info-left .experience {
+    font-size: 0.75rem;
+  }
+  
+  .btn.small {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+  }
+  
+  .price {
+    font-size: 0.85rem;
+  }
+}

@@ -1,0 +1,32 @@
+.why-horoscope {
+ // background: #f8f9fa;
+  padding: 50px 0;
+}
+
+.why-content {
+  max-width: 1500px;
+  margin: 0 auto;
+  text-align: justify;
+}
+
+.why-content p {
+  margin-bottom: 20px;
+  line-height: 1.7;
+  color: #444;
+  font-size: 0.95rem;
+}
+
+.why-content p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .why-content {
+    text-align: left;
+  }
+
+  .why-content p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+}
