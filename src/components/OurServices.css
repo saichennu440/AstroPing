@@ -24,7 +24,10 @@
   padding: 2rem 1.5rem;
   text-align: center;
 }
-
+.service-card:hover{
+transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
 
 .service-icon {
   margin-bottom: 1rem;

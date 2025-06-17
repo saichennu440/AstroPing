@@ -1,31 +1,20 @@
-import './ScheduleAppointment.css'
+// src/components/ScheduleAppointment/ScheduleAppointment.jsx
+
+import React from 'react';
+import './ScheduleAppointment.css';
+
+// import your images from src/assets
+import bg1 from '/assets/Group 74.png';
+import bg2 from '/assets/Group 75.png';
+import bg3 from '/assets/Group 80.png';
+import bg4 from '/assets/Group 81.png';
 
 const appointments = [
-  {
-    image: '/assets/Group 74.png',     // full‑card background
-    icon: '/assets/Group 74.png',      // centered icon
-    title: 'Palm Reader',
-    description: 'Life & future insights'
-  },
-  {
-    image: '/assets/Group 75.png',
-    icon: '/assets/Group 75.png',
-    title: 'Tarot Reader',
-    description: 'Card‑based guidance'
-  },
-  {
-    image: '/assets/Group 80.png',
-    icon: '/assets/Group 80.png',
-    title: 'Horoscope',
-    description: 'Daily star guidance'
-  },
-  {
-    image: '/assets/Group 81.png',
-    icon: '/assets/Group 81.png',
-    title: 'Best Astrologer',
-    description: 'Top rated experts'
-  }
-]
+  { image: bg1 },
+  { image: bg2 },
+  { image: bg3 },
+  { image: bg4 },
+];
 
 export default function ScheduleAppointment() {
   return (
@@ -35,22 +24,17 @@ export default function ScheduleAppointment() {
           <h2 className="section-title">Schedule Appointment</h2>
           <a href="#" className="view-all">View All</a>
         </div>
-        
+
         <div className="appointments-grid">
           {appointments.map((appt, idx) => (
             <div
               key={idx}
-              className="appointmen"
+              className="appointment-card"
               style={{ backgroundImage: `url(${appt.image})` }}
-            >
-              <div className="appointment-icon">
-                <img src={appt.icon} alt={appt.title} />
-              </div>
-            
-            </div>
+            />
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }
