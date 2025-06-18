@@ -1,3 +1,4 @@
+/* ===== Global Reset & Base ===== */
 * {
   margin: 0;
   padding: 0;
@@ -20,9 +21,10 @@ body {
   overflow-x: hidden;
 }
 
+/* ===== Layout Containers ===== */
 .container {
   max-width: 1200px;
-  margin: ;
+  margin: 0 auto;           /* ◀️ actually center it */
   padding: 0 20px;
 }
 
@@ -30,6 +32,7 @@ body {
   padding: 60px 0;
 }
 
+/* ===== Section Headers ===== */
 .section-title {
   font-size: 1.8rem;
   font-weight: 600;
@@ -38,6 +41,7 @@ body {
   color: #333;
 }
 
+/* still applies everywhere */
 .section-header {
   display: flex;
   justify-content: space-between;
@@ -57,6 +61,7 @@ body {
   color: #E55A2E;
 }
 
+/* ===== Grid Utilities ===== */
 .grid {
   display: grid;
   gap: 20px;
@@ -74,6 +79,7 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
+/* ===== Cards & Buttons ===== */
 .card {
   background: white;
   border-radius: 12px;
@@ -132,6 +138,7 @@ body {
   color: white;
 }
 
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
   .container {
     padding: 0 15px;
@@ -142,11 +149,13 @@ body {
   }
   
   .section-title {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    /* center just the standalone section titles, not our blog header */
     text-align: center;
   }
   
-  .section-header {
+  /* ————— only stack headers inside a `.section` container ————— */
+  .section .section-header {
     flex-direction: column;
     gap: 15px;
     text-align: center;

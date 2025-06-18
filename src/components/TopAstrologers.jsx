@@ -74,9 +74,9 @@ export default function TopAstrologers() {
                 <div className="card-header">
                   <div className="astrologer-image">
                     <img src={a.image} alt={a.name} />
-                    <span className={`status-indicator ${a.online ? 'online' : 'offline'}`} />
+                   <span className={`status-indicator ${a.online ? 'online' : 'offline'}`} />
                   </div>
-                  <button className="btn follow-btn">+ Follow</button>
+                  {/* <button className="btn follow-btn">+ Follow</button> */}
                 </div>
                 <div className="card-body">
                   <div className="info-left">
@@ -96,7 +96,7 @@ export default function TopAstrologers() {
                   </div>
                   <div className="info-right">
                     {/* <span className="price">₹{a.price}/Min</span> */}
-                     <button className="btn follow-btn mobile-follow">+ Follow</button>
+                     <button className="btn follow-btn">+ Follow</button>
                     <span className="price">₹{a.price}/Min</span>
                     <div className="action-buttons">
                       <button className="btn primary small">CALL</button>
