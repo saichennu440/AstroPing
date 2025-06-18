@@ -111,7 +111,7 @@
 .card-body {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content:  space-between;
 }
 
 .info-left {
@@ -222,6 +222,7 @@
     /* remove any bottom margin so they sit tighter */
    
   }
+  
     .top-astrologers {
     padding-top: 60px !important;    /* was 50px */
     padding-bottom: 20px !important; /* keep bottom from collapsing */

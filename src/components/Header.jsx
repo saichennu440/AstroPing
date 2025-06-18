@@ -304,9 +304,12 @@ export default function Header() {
           }
 
           .logo-text {
-            font-size: 1.2rem;
+            font-size: 1.0rem;
           }
-
+img.img {
+      width: 37px; /* Or your desired width */
+      height: auto; /* To maintain aspect ratio, or a specific height */
+    }
           .logo-icon {
             width: 32px;
             height: 32px;
@@ -333,21 +336,9 @@ export default function Header() {
         <div className="container top-bar">
           <div className="logo">
             <div className="logo-icon">
-              <svg width="40" height="40" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="100" cy="100" r="80" fill="#FF6B35" />
-                <circle cx="100" cy="100" r="55" fill="none" stroke="#fff" strokeWidth="4" />
-                <circle cx="100" cy="100" r="8" fill="#fff" />
-                <g fill="#fff">
-                  <polygon points="100,20 108,40 92,40" />
-                  <polygon points="180,100 160,108 160,92" />
-                  <polygon points="100,180 92,160 108,160" />
-                  <polygon points="20,100 40,92 40,108" />
-                  <polygon points="150,50 142,68 132,58" />
-                  <polygon points="50,50 58,68 68,58" />
-                  <polygon points="150,150 132,142 142,132" />
-                  <polygon points="50,150 68,142 58,132" />
-                </g>
-              </svg>
+             
+                <img className='img' src="/assets/image 4.png" alt="AstroPing" />
+              
             </div>
             <span className="logo-text">AstroPing</span>
           </div>
