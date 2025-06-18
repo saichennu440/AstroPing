@@ -63,9 +63,8 @@
     height: 45px;
     font-size: 1.1rem;
   }
-  .section-title{
-    color:red;
-  }
+  
+  
 }
 
 @media (max-width: 480px) {

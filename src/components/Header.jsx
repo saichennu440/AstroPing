@@ -305,11 +305,15 @@ export default function Header() {
 
           .logo-text {
             font-size: 1.0rem;
+            margin-left:4px;
+            margin-top: -12px;
           }
 img.img {
       width: 37px; /* Or your desired width */
       height: auto; /* To maintain aspect ratio, or a specific height */
-    }
+ margin-right:6px;
+ margin-top:3px;
+      }
           .logo-icon {
             width: 32px;
             height: 32px;
