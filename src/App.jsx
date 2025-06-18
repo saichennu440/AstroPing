@@ -6,7 +6,7 @@ import ScheduleAppointment from './components/ScheduleAppointment'
 import TodaysPrediction from './components/TodaysPrediction'
 import OurServices from './components/OurServices'
 import ConsultAstrologer from './components/ConsultAstrologer'
-//import FreeServices from './components/FreeServices'
+import FreeServices from './components/FreeServices'
 import Blog from './components/Blog'
 import Stats from './components/Stats'
 import Astrologers from './components/Astrologers'
@@ -25,7 +25,7 @@ function App() {
       <TodaysPrediction />
       <OurServices />
       <ConsultAstrologer />
-      
+      <FreeServices/>
       <Blog />
       <Stats />
       <Astrologers />

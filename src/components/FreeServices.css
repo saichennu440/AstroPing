@@ -1,0 +1,94 @@
+.free-services {
+  background: white;
+  padding: 50px 0;
+}
+
+.free-services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+ .sectionn-title {
+    font-size: 1.7rem;
+    /* center just the standalone section titles, not our blog header */
+    text-align: center;
+  }
+.free-service-card {
+  text-align: center;
+  padding: 40px 30px;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #f0f0f0;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.free-service-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.free-service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-top: 25px solid #FF6B35;
+}
+
+.service-icon {
+  width: 80px;
+  height: 80px;
+  background: #FF6B35;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 2rem;
+  color: white;
+}
+
+.free-service-card h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.free-service-card p {
+  color: #666;
+  margin-bottom: 25px;
+  line-height: 1.5;
+  font-size: 0.9rem;
+}
+
+.free-service-card .btn {
+  padding: 10px 25px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .free-services-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+   .sectionn-title {
+    font-size:1.0rem  ;
+    /* center just the standalone section titles, not our blog header */
+     margin-top: -20px;
+  }
+
+  .service-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 1.8rem;
+  }
+}
