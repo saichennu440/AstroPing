@@ -129,11 +129,13 @@ export default function ProfileModal({ isOpen, onClose, user, onUpdate }) {
           border-radius: 8px;
           width: 600px;
           max-width: 95%;
-          max-height: 90vh;
+          max-height: 95vh;
           overflow-y: auto;
           padding: 30px;
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
           z-index: 2001;
+          margin-top:100px;
+          height: 80vh;
         }
         .close {
           position: absolute;
@@ -185,7 +187,7 @@ export default function ProfileModal({ isOpen, onClose, user, onUpdate }) {
             width: 95%;
             max-height: 90vh;
             padding: 20px;
-            margin-top:60px;
+            margin-top:20px;
           }
         }
       `}</style>
