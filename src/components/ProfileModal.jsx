@@ -116,6 +116,7 @@ export default function ProfileModal({ isOpen, onClose, user, onUpdate }) {
           align-items: center;
           justify-content: center;
           z-index: 2000;
+          
         }
         .overlay {
           position: absolute;
@@ -184,6 +185,7 @@ export default function ProfileModal({ isOpen, onClose, user, onUpdate }) {
             width: 95%;
             max-height: 90vh;
             padding: 20px;
+            margin-top:60px;
           }
         }
       `}</style>
