@@ -11,38 +11,46 @@
   color: #333;
 }
 
+/* make the cards a true grid, centered, with consistent gaps */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
+  gap: 2rem;                /* a bit more breathing room */
+  justify-items: center;    /* center each card in its cell */
 }
 
+/* card styling to match your screenshot exactly */
 .service-card {
   background: #fff;
-  border: 1px solid #e67e22;       /* orange border */
-  border-radius: 12px;
+  border: 1px solid #e67e22;    /* orange border */
+  border-radius: 8px;           /* slightly tighter corners */
   padding: 2rem 1.5rem;
   text-align: center;
+  width: 100%;
+  max-width: 260px;             /* constrain width so they’re uniform */
+  box-shadow: none;
+  transition: box-shadow 0.2s, transform 0.2s;
 }
-.service-card:hover{
-transform: translateY(-3px);
+.service-card:hover {
+  transform: translateY(-5px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .service-icon {
   margin-bottom: 1rem;
+  
 }
-
 .service-icon img {
   width: 60px;
   height: 60px;
   object-fit: contain;
+  
 }
 
 .service-title {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #e67e22;                   /* orange title */
+  color: #e67e22;
   margin-bottom: 0.75rem;
 }
 
@@ -50,18 +58,21 @@ transform: translateY(-3px);
   font-size: 0.9rem;
   line-height: 1.5;
   color: #555;
+  margin: 0;
 }
 
-/* Responsive */
+/* Responsive: 2‑column on tablets */
 @media (max-width: 992px) {
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    gap: 1.5rem;
   }
 }
 
+/* Responsive: 1‑column on phones */
 @media (max-width: 576px) {
   .services-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
 }

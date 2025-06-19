@@ -34,12 +34,32 @@
 }
 .view-all:hover {
   background: rgba(255,107,53,0.1);
+  cursor: pointer;
 }
 
 .slider-wrapper {
   position: relative;
 }
-
+.back-home {
+  display: inline-block;
+  margin: 1.5rem auto 2rem;
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  background-color: #667eea;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  position: sticky;
+  top: 1rem;
+  z-index: 10;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.back-home:hover {
+  background-color: #5763c9;
+  transform: translateY(-2px);
+}
 .astrologers-slider {
   display: flex;
   gap: 24px;
@@ -54,26 +74,26 @@
 .astrologer-card {
   flex: 0 0 350px;
   background: #fff;
-  border-radius: 12px;
-  padding: 24px;
+  border-radius: 16px;
+  padding: 20px;
   scroll-snap-align: start;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 16px;
 }
 
 .card-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 16px;
+  gap:16px;
 }
 
 .astrologer-image {
   position: relative;
-  width: 80px;
-  height: 80px;
+  width: 64px;
+  height: 64px;
+  flex-shrink:0;
 }
 .astrologer-image img {
   width: 100%;
@@ -83,14 +103,14 @@
 }
 .status-indicator {
   position: absolute;
-  bottom: 4px;
-  right: 4px;
-  width: 14px;
-  height: 14px;
+  bottom: 2px;
+  right: 2px;
+  width: 12px;
+  height: 12px;
   border: 2px solid #fff;
   border-radius: 50%;
 }
-.status-indicator.online {
+.status-indicator.available {
   background: #4CAF50;
 }
 .status-indicator.offline {
@@ -101,17 +121,18 @@
   background: transparent;
   border: 1px solid #FF6B35;
   color: #FF6B35;
-  padding: 4px 12px;
+  padding: 4px 15px;
   border-radius: 16px;
   font-size: 0.85rem;
   cursor: pointer;
+  margin-bottom:10px;
 
 }
 
 .card-body {
   display: flex;
-  align-items: center;
   justify-content:  space-between;
+  align-items:flex-start;
 }
 
 .info-left {
@@ -119,24 +140,28 @@
   margin-right: 24px;
 }
 .info-left h3 {
-  margin: 0 0 4px;
-  font-size: 1.1rem;
+  margin: 0;
+  font-size: 1rem;
+  font-weight:600;
   color: #222;
 }
 .info-left .expertise,
 .info-left .experience {
-  margin: 2px 0;
   color: #555;
   font-size: 0.9rem;
+  margin:2px 0;
 }
 .rating {
   display: flex;
   align-items: center;
-  margin-top: 8px;
+  margin-top: 4px;
+  font-size:0.85rem;
+  color: #444;
 }
 .stars {
   display: flex;
   gap: 2px;
+  margin-left:-18px;
 }
 .star {
   font-size: 1rem;
@@ -159,24 +184,24 @@
  
 }
 .price {
-  font-size: 0.95rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: bold;
   color: #333;
 }
 .action-buttons {
   display: flex;
-  gap: 8px;
+  gap: 6px;
 }
 .btn.small {
   font-size: 0.85rem;
-  padding: 6px 12px;
-  border-radius: 16px;
+  padding: 6px 14px;
+  border-radius: 20px;
   cursor: pointer;
 }
 .btn.primary.small {
   background: #FF6B35;
   color: #fff;
-  border: 1px solid #FF6B35;
+  border: none;
 }
 .btn.outline.small {
   background: transparent;
@@ -203,7 +228,13 @@
 .slider-arrow.right {
   right: -40px;
 }
-
+/* Grid for the “All Astrologers” page */
+.astrologers-grid {
+  display: grid;
+  gap: 20px;
+  /* 4 columns on desktop */
+  grid-template-columns: repeat(3, 1fr);
+}
 /* … earlier styles … */
 
 /* ── MOBILE PORTRAIT (≤480px) ── */
@@ -222,6 +253,10 @@
   
     /* remove any bottom margin so they sit tighter */
    
+  }
+
+   .astrologers-grid {
+    grid-template-columns: 1fr;
   }
   
     .top-astrologers {
@@ -244,7 +279,7 @@
 
   /* If your “View All” button has extra translateY */
   .top-astrologers .section-header.spaced .view-all {
-    //transform: none !important;      /* cancel any upward shift */
+    /* transform: none !important;      cancel any upward shift */
     margin-top: 0 !important;
   }
 .view-all{
@@ -351,3 +386,17 @@
     font-size: 0.8rem;
     padding: 5px 10px;
   }
+  .expertise {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px; /* adjust as needed */
+  display: block;
+}
+
+/* 2 columns on tablets and phones */
+@media (max-width: 768px) {
+  .astrologers-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

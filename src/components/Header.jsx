@@ -1,10 +1,11 @@
 // src/components/Header.jsx
 import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
+import { useNavigate } from 'react-router-dom'
 
 // nav items with dropdown indicator
 const NAV_ITEMS = [
-  { label: 'Home', hasDropdown: false },
+  { label: 'Home', hasDropdown: false, path: '/'  },
   { label: 'Consult Now', hasDropdown: false },
   { label: 'Horoscope', hasDropdown: false },
   { label: 'Year 2025', hasDropdown: true },
@@ -26,7 +27,7 @@ export default function Header({
   const [active, setActive] = useState('Home')
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [userMenuOpen, setUserMenuOpen] = useState(false)
-
+  const navigate = useNavigate()
     // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = mobileMenuOpen ? 'hidden' : ''
@@ -34,6 +35,12 @@ export default function Header({
       document.body.style.overflow = ''
     }
   }, [mobileMenuOpen])
+
+    const handleNavClick = (label, path) => {
+    setActive(label)
+    navigate(path)
+    setMobileMenuOpen(false) // close mobile menu if open
+  }
 
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen)
 
@@ -47,16 +54,22 @@ export default function Header({
         }
 
         .header-container {
+        position: static;    /* ← make it stick */
           width: 100%;
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         /* Desktop Styles */
-        .header {
-          width: 100%;
-          background: #fff;
-          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
 
         .container {
           max-width: 1440px;
@@ -64,7 +77,9 @@ export default function Header({
           margin: 0 auto;
           padding: 0 60px;
         }
-
+.nav-link {
+      background-color: transparent;
+    }
         .top-bar {
           display: flex;
           align-items: center;
@@ -135,14 +150,15 @@ export default function Header({
           display: flex;
           justify-content: center;
           flex: 1;
-          gap: 50px;
+          gap: 10px;
+              
         }
 
         .nav-link {
           position: relative;
           font-size: 0.95rem;
           font-weight: 500;
-          color: #333;
+        color: #333;
           text-decoration: none;
           padding-bottom: 12px;
           display: flex;
@@ -321,16 +337,19 @@ export default function Header({
           }
 
           .mobile-nav-link {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px 0;
-            font-size: 1rem;
-            font-weight: 500;
-            color: #333;
-            text-decoration: none;
-            border-bottom: 1px solid #f0f0f0;
-            transition: color 0.2s;
+  display: block;              /* full width */
+  width: 100%;
+  padding: 12px 16px;          /* comfortable touch area */
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;                 /* default text color */
+  text-align: left;            /* left align */
+  background: none;            /* transparent background */
+  border: none;                /* remove default button styles */
+  border-bottom: 1px solid #f0f0f0;  /* thin separator */
+  cursor: pointer;
+  transition: color 0.2s;
+  position: relative;          /* for pseudo/caret */
           }
 
           .mobile-nav-link:last-child {
@@ -342,16 +361,24 @@ export default function Header({
             color: #FF6B35;
           }
 
-          .mobile-nav-link .caret {
-            transform: rotate(0deg);
-            transition: transform 0.2s;
-          }
+          /* Caret on the right for dropdowns */
+.mobile-nav-link .caret {
+  margin-left: auto;           /* push it to far right */
+  transition: transform 0.2s;
+}
 
-          .mobile-nav-link:hover .caret {
-            transform: rotate(180deg);
-          }
-        }
+          .mobile-nav-link.active .caret,
+.mobile-nav-link:hover .caret {
+  transform: rotate(180deg);
+}
+.mobile-nav.open .mobile-nav-content {
+  padding: 0; /* remove the 20px horizontal from before */
+}
 
+/* If you still want a bit of left padding overall: */
+.mobile-nav-content {
+  padding: 0 8px; /* small gutter instead of 20px */
+}
         @media (max-width: 480px) {
           .container {
             padding: 0 10px;
@@ -372,7 +399,9 @@ img.img {
             width: 32px;
             height: 32px;
           }
-
+.mobile-nav-link {
+background-color: transparent;
+}
           .header-controls {
             gap: 10px;
           }
@@ -491,37 +520,19 @@ img.img {
         {/* Desktop bottom nav bar */}
         <div className="container bottom-bar">
           <nav className="nav">
-            {NAV_ITEMS.map(({ label, hasDropdown }) => (
-              <a
+            {NAV_ITEMS.map(({ label, hasDropdown, path }) => (
+              <button
                 key={label}
-                href="#"
-                className={`nav-link${
-                  active === label ? ' active' : ''
-                }`}
-                onClick={(e) => {
-                  e.preventDefault()
-                  setActive(label)
-                }}
+                className={`nav-link${active === label ? ' active' : ''}`}
+                onClick={() => handleNavClick(label, path)}
               >
                 {label}
-                {hasDropdown && (
-                  <svg
-                    className="caret"
-                    width="10"
-                    height="6"
-                    viewBox="0 0 10 6"
-                  >
-                    <path
-                      d="M1 1l4 4 4-4"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    />
-                  </svg>
-                )}
-              </a>
+                {hasDropdown && <span className="caret">▾</span>}
+              </button>
             ))}
           </nav>
         </div>
+
 
         {/* Mobile navigation */}
         <div
@@ -530,18 +541,11 @@ img.img {
           }`}
         >
           <div className="mobile-nav-content">
-            {NAV_ITEMS.map(({ label, hasDropdown }) => (
-              <a
+            {NAV_ITEMS.map(({ label, hasDropdown, path }) => (
+              <button
                 key={label}
-                href="#"
-                className={`mobile-nav-link${
-                  active === label ? ' active' : ''
-                }`}
-                onClick={(e) => {
-                  e.preventDefault()
-                  setActive(label)
-                  setMobileMenuOpen(false)
-                }}
+                className={`mobile-nav-link${active === label ? ' active' : ''}`}
+                onClick={() => handleNavClick(label, path)}
               >
                 <span>{label}</span>
                 {hasDropdown && (
@@ -558,7 +562,7 @@ img.img {
                     />
                   </svg>
                 )}
-              </a>
+              </button>
             ))}
           </div>
         </div>

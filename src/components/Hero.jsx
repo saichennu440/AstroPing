@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Hero.css';
 import bgShape from '../assets/image.png';
 import astrologer from '../assets/image2.png';
@@ -13,9 +14,17 @@ const ACTIONS = [
 ];
 
 export default function Hero() {
+  const navigate = useNavigate();
+
+  const handleActionClick = (label) => {
+    if (label === 'Talk' || label === 'Chat') {
+      navigate('/topastrologers');
+    }
+  };
+
   return (
     <section className="hero">
-      <div className="hero-bg" style={{ backgroundImage: `url(${bgShape})` }} />
+      <div className="hero-bg" style={{ backgroundImage: `url(${bgShape}) `}} />
 
       <div className="hero-wheel" style={{ backgroundImage: `url(${zodiac})` }} />
 
@@ -26,7 +35,7 @@ export default function Hero() {
           <button className="btn hero-btn">First chat Free</button>
         </div>
         <div className="hero-image">
-          <div className="astro-wheel-bg" style={{ backgroundImage: `url(${wheelBg})` }} />
+          <div className="astro-wheel-bg" style={{ backgroundImage: `url(${wheelBg}) `}} />
           <img src={astrologer} alt="Astrologer" className="astro-portrait" />
         </div>
       </div>
@@ -34,7 +43,11 @@ export default function Hero() {
       <div className="hero-actions-wrapper">
         <div className="container hero-actions">
           {ACTIONS.map(({ icon, label }) => (
-            <button key={label} className="action-card">
+            <button
+              key={label}
+              className="action-card"
+              onClick={() => handleActionClick(label)}
+            >
               <span className="action-icon-wrapper">{icon}</span>
               <span className="action-label">{label}</span>
               <span className="action-arrow">→</span>

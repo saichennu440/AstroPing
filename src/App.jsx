@@ -1,6 +1,12 @@
 // src/App.jsx
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from 'react-router-dom'
+
 import Header from './components/Header'
 import Hero from './components/Hero'
 // import Services from './components/Services'
@@ -18,7 +24,8 @@ import Footer from './components/Footer'
 
 import SignInModal from './components/SignInModal'
 import ProfileModal from './components/ProfileModal'
-
+import AllTopAstrologers from './components/AllTopAstrologers'
+import AllAstrologers from './components/AllAstrologers'
 import './components/SignInForm.css'
 import './App.css'
 
@@ -29,7 +36,6 @@ function App() {
   const [showSignIn, setShowSignIn] = useState(false)
   // Profile modal
   const [showProfile, setShowProfile] = useState(false)
-    console.log('showProfile:', showProfile);
   // Logged‑in user
   const [currentUser, setCurrentUser] = useState(null)
 
@@ -51,12 +57,11 @@ function App() {
       }
     } catch (err) {
       console.error('Failed to fetch user:', err)
-      // token might be invalid – clear it
       handleLogout()
     }
   }
 
-  // Handle successful login (receive JWT from SignInModal)
+  // Handle successful login
   const handleLogin = (token) => {
     localStorage.setItem('jwt', token)
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
@@ -72,7 +77,8 @@ function App() {
     setShowProfile(false)
   }
 
-  return (
+  // The “home” page layout, pulled into its own component for clarity
+  const HomePage = () => (
     <div className="App">
       <Header
         user={currentUser}
@@ -80,7 +86,7 @@ function App() {
         onProfileClick={() => setShowProfile(true)}
         onLogout={handleLogout}
       />
-
+      <main>
       <Hero />
       {/* <Services /> */}
       <TopAstrologers />
@@ -90,11 +96,32 @@ function App() {
       <ConsultAstrologer />
       <FreeServices />
       <Blog />
+      
       <Stats />
       <Astrologers />
       <WhyHoroscope />
+      </main>
       <Footer />
+    </div>
+  )
 
+  return (
+    <Router>
+      {/* Route‑aware rendering */}
+      <Routes>
+        <Route
+          path="/"
+          element={<HomePage />}
+        />
+        <Route path="/astrologers" element={<AllAstrologers/>}/>
+        <Route
+          path="/topastrologers"
+          element={<AllTopAstrologers />}
+        />
+        
+      </Routes>
+
+      {/* Modals live outside of <Routes> so they’re always mountable */}
       <SignInModal
         isOpen={showSignIn}
         onClose={() => setShowSignIn(false)}
@@ -107,7 +134,7 @@ function App() {
         user={currentUser}
         onUpdate={fetchCurrentUser}
       />
-    </div>
+    </Router>
   )
 }
 

@@ -45,7 +45,7 @@
 .service-icon {
   width: 80px;
   height: 80px;
-  background: #FF6B35;
+  //background: #FF6B35;
   border-radius: 15px;
   display: flex;
   align-items: center;
