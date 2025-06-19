@@ -1,0 +1,164 @@
+full‑screen dark overlay
+.sign-in-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* panel wrapper */
+.sign-in-panel {
+  display: flex;
+  width: 80%;
+  max-width: 900px;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,.2);
+}
+
+/* image side */
+.image-side {
+  flex: 1;
+  background: #eee;
+}
+.side-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* form side */
+.form-side {
+  flex: 1;
+  padding: 2rem;
+}
+.title {
+  margin-bottom: 1rem;
+  font-size: 1.75rem;
+}
+
+/* shared button styles */
+/* .btn {
+  width: 100%;
+  padding: .75rem;
+  border: none;
+  border-radius: 4px;
+  background: #eee;
+  cursor: pointer;
+  font-size: 1rem;
+} */
+
+/* phone form */
+.phone-form .label {
+  display: block;
+  margin-bottom: .5rem;
+}
+.input-group {
+  display: flex;
+  margin-bottom: 1rem;
+}
+.country-code {
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+  padding: .5rem;
+  background: #fafafa;
+}
+.phone-input {
+  flex: 1;
+  border: 1px solid #ccc;
+  border-left: none;
+  border-radius: 0 4px 4px 0;
+  padding: .5rem;
+}
+
+/* OTP form */
+.otp-form .subtext {
+  margin-bottom: 1rem;
+}
+.edit-phone {
+  margin-left: .5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.otp-inputs {
+  display: flex;
+  gap: .5rem;
+  margin-bottom: 1rem;
+}
+.otp-box {
+  width: 2.5rem;
+  height: 2.5rem;
+  text-align: center;
+  font-size: 1.25rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.resend-line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.resend-otp {
+  background: none;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.timer {
+  margin-left: .5rem;
+  color: #666;
+}
+
+/* error message */
+.otp-error {
+  color: #d32f2f;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 10;
+}
+/* only form buttons get this style */
+.sign-in-overlay .send-otp-btn,
+.sign-in-overlay .verify-otp-btn {
+  width: 100%;
+  padding: .75rem;
+  border: none;
+  border-radius: 4px;
+  background: #FF6B35;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+
+/* mobile responsiveness */
+@media (max-width: 768px) {
+  .sign-in-panel {
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    border-radius: 0;
+  }
+  .image-side {
+    display: none;
+  }
+  .form-side {
+    padding: 1.5rem;
+    overflow-y: auto;
+  }
+}

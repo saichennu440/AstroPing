@@ -1,4 +1,6 @@
-import { useState } from 'react'
+// src/components/Header.jsx
+import { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 
 // nav items with dropdown indicator
 const NAV_ITEMS = [
@@ -15,17 +17,29 @@ const NAV_ITEMS = [
   { label: 'Session Booking', hasDropdown: false },
 ]
 
-export default function Header() {
+export default function Header({
+  user,
+  onSignInClick,
+  onProfileClick,
+  onLogout,
+}) {
   const [active, setActive] = useState('Home')
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [userMenuOpen, setUserMenuOpen] = useState(false)
 
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen)
-  }
+    // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [mobileMenuOpen])
+
+  const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen)
 
   return (
     <div className="header-container">
-      <style jsx>{`
+       <style jsx>{`
         * {
           margin: 0;
           padding: 0;
@@ -171,7 +185,45 @@ export default function Header() {
           justify-content: center;
           align-items: center;
         }
-
+.user-menu {
+          position: relative;
+        }
+        .user-icon-btn {
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 8px;
+        }
+        /* Inline SVG will scale automatically */
+        .user-icon-btn svg {
+          width: 32px;
+          height: 32px;
+          fill: #333;
+        }
+        .user-dropdown {
+          position: absolute;
+          top: 48px;
+          right: 0;
+          background: white;
+          list-style: none;         /* remove bullets */
+          margin: 0;                 /* remove default margin */
+          padding: 8px 0;            /* vertical padding */
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+          border-radius: 4px;
+          z-index: 1500;
+          min-width: 140px;
+        }
+        .user-dropdown li {
+          padding: 8px 16px;
+          cursor: pointer;
+          white-space: nowrap;
+        }
+        .user-dropdown li + li {
+          margin-top: 4px;
+        }
+        .user-dropdown li:hover {
+          background: #f5f5f5;
+        }
         .mobile-toggle span {
           display: block;
           width: 24px;
@@ -243,17 +295,19 @@ export default function Header() {
           .mobile-nav {
             position: fixed;
             top: 60px;
+            bottom: 0;               /* extend to bottom */
             left: 0;
             right: 0;
             background: #fff;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             transform: translateY(-100%);
             opacity: 0;
             visibility: hidden;
             transition: transform 0.3s ease, opacity 0.3s ease;
             z-index: 1000;
-            max-height: calc(100vh - 60px);
-            overflow-y: auto;
+            height: calc(100vh - 60px);  /* full height under header */
+            overflow-y: auto;            /* now scrollable */
+            -webkit-overflow-scrolling: touch;
           }
 
           .mobile-nav.open {
@@ -340,16 +394,18 @@ img.img {
         <div className="container top-bar">
           <div className="logo">
             <div className="logo-icon">
-             
-                <img className='img' src="/assets/image 4.png" alt="AstroPing" />
-              
+              <img
+                className="img"
+                src="/assets/image 4.png"
+                alt="AstroPing"
+              />
             </div>
             <span className="logo-text">AstroPing</span>
           </div>
 
           <div className="header-controls">
             <button className="btn lang-btn">
-              <svg
+             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
                 height="16"
@@ -362,7 +418,7 @@ img.img {
             </button>
 
             <button className="btn notif-btn" aria-label="Notifications">
-              <svg
+             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="18"
                 height="18"
@@ -376,16 +432,58 @@ img.img {
               </svg>
             </button>
 
-            <button className="btn sign-in-btn">Sign In</button>
+            {!user ? (
+              <button
+                className="btn sign-in-btn"
+                onClick={onSignInClick}
+              >
+                Sign In
+              </button>
+            ) : (
+              <div className="user-menu">
+                <button
+                  className="user-icon-btn"
+                  onClick={() => setUserMenuOpen(!userMenuOpen)}
+                  aria-label="User menu"
+                >
+                 {/* Inline user SVG */}
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z" />
+                  </svg>
+                </button>
+                {userMenuOpen && (
+                  <ul className="user-dropdown">
+                    <li
+                      onClick={() => {
+                        setUserMenuOpen(false)
+                        onProfileClick()
+                      }}
+                    >
+                      My Profile
+                    </li>
+                    <li
+                      onClick={() => {
+                        setUserMenuOpen(false)
+                        onLogout()
+                      }}
+                    >
+                      Logout
+                    </li>
+                  </ul>
+                )}
+              </div>
+            )}
 
-            <button 
-              className={`mobile-toggle ${mobileMenuOpen ? 'open' : ''}`}
+            <button
+              className={`mobile-toggle ${
+                mobileMenuOpen ? 'open' : ''
+              }`}
               onClick={toggleMobileMenu}
               aria-label="Toggle mobile menu"
             >
-              <span></span>
-              <span></span>
-              <span></span>
+              <span />
+              <span />
+              <span />
             </button>
           </div>
         </div>
@@ -397,7 +495,9 @@ img.img {
               <a
                 key={label}
                 href="#"
-                className={`nav-link${active === label ? ' active' : ''}`}
+                className={`nav-link${
+                  active === label ? ' active' : ''
+                }`}
                 onClick={(e) => {
                   e.preventDefault()
                   setActive(label)
@@ -410,10 +510,12 @@ img.img {
                     width="10"
                     height="6"
                     viewBox="0 0 10 6"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="2" />
+                    <path
+                      d="M1 1l4 4 4-4"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    />
                   </svg>
                 )}
               </a>
@@ -422,13 +524,19 @@ img.img {
         </div>
 
         {/* Mobile navigation */}
-        <div className={`mobile-nav ${mobileMenuOpen ? 'open' : ''}`}>
+        <div
+          className={`mobile-nav ${
+            mobileMenuOpen ? 'open' : ''
+          }`}
+        >
           <div className="mobile-nav-content">
             {NAV_ITEMS.map(({ label, hasDropdown }) => (
               <a
                 key={label}
                 href="#"
-                className={`mobile-nav-link${active === label ? ' active' : ''}`}
+                className={`mobile-nav-link${
+                  active === label ? ' active' : ''
+                }`}
                 onClick={(e) => {
                   e.preventDefault()
                   setActive(label)
@@ -442,10 +550,12 @@ img.img {
                     width="10"
                     height="6"
                     viewBox="0 0 10 6"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="2" />
+                    <path
+                      d="M1 1l4 4 4-4"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    />
                   </svg>
                 )}
               </a>
@@ -455,4 +565,10 @@ img.img {
       </header>
     </div>
   )
+}
+Header.propTypes = {
+  user: PropTypes.object,
+  onSignInClick: PropTypes.func.isRequired,
+  onProfileClick: PropTypes.func.isRequired,
+  onLogout: PropTypes.func.isRequired,
 }

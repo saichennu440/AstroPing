@@ -195,6 +195,7 @@
   cursor: pointer;
   border-radius: 4px;
   z-index: 2;
+  color:black;
 }
 .slider-arrow.left {
   left: -40px;
