@@ -140,8 +140,9 @@ export default function ProfileModal({ isOpen, onClose, user, onUpdate }) {
           right: 12px;
           background: none;
           border: none;
-          font-size: 1.5rem;
+          font-size: 1.8rem;
           cursor: pointer;
+          color:orange;
         }
         .form-group {
           margin-bottom: 16px;
