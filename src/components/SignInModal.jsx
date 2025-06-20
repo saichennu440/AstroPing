@@ -1,5 +1,5 @@
 // src/components/SignInModal.jsx
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useLayoutEffect } from 'react'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 
@@ -16,14 +16,19 @@ export default function SignInModal({ isOpen, onClose, onLogin }) {
   const [error, setError] = useState('')
   const otpRefs = useRef([])
 
-  useEffect(() => {
+  // disable/enable body scroll synchronously
+  useLayoutEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
+    return () => {
+      document.body.style.overflow = ''
+    }
   }, [isOpen])
 
-  // auto-focus first OTP box when entering step 2
-  useEffect(() => {
-    if (step === 2) otpRefs.current[0]?.focus()
+  // auto-focus first OTP box when entering step 2, synchronously
+  useLayoutEffect(() => {
+    if (step === 2) {
+      otpRefs.current[0]?.focus()
+    }
   }, [step])
 
   const sendEndpoint =
@@ -65,7 +70,9 @@ export default function SignInModal({ isOpen, onClose, onLogin }) {
     const newOtp = [...otp]
     newOtp[idx] = val.slice(-1)
     setOtp(newOtp)
-    if (idx < OTP_LENGTH - 1) otpRefs.current[idx + 1]?.focus()
+    if (idx < OTP_LENGTH - 1) {
+      otpRefs.current[idx + 1]?.focus()
+    }
   }
 
   const handleOtpKeyDown = (e, idx) => {
@@ -147,7 +154,6 @@ export default function SignInModal({ isOpen, onClose, onLogin }) {
                   <option value="+91">+91 (IN)</option>
                   <option value="+1">+1 (USA)</option>
                   <option value="+44">+44 (UK)</option>
-                  {/* add more as needed */}
                 </select>
                 <input
                   type="tel"
@@ -204,7 +210,7 @@ export default function SignInModal({ isOpen, onClose, onLogin }) {
         </div>
       </div>
 
-      <style jsx>{`
+       <style jsx>{`
         .modal {
           position: fixed;
           inset: 0;
@@ -332,5 +338,5 @@ export default function SignInModal({ isOpen, onClose, onLogin }) {
 SignInModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
-  onLogin: PropTypes.func.isRequired,  // new prop
+  onLogin: PropTypes.func.isRequired,
 }

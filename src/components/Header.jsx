@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 const NAV_ITEMS = [
   { label: 'Home', hasDropdown: false, path: '/'  },
   { label: 'Consult Now', hasDropdown: false },
-  { label: 'Horoscope', hasDropdown: false },
+  { label: 'Horoscope', hasDropdown: false, path: '/horoscope' },
   { label: 'Year 2025', hasDropdown: true },
   { label: 'Panchang', hasDropdown: true },
   { label: 'Kundli', hasDropdown: true },

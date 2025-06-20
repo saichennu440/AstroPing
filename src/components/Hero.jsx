@@ -20,6 +20,9 @@ export default function Hero() {
     if (label === 'Talk' || label === 'Chat') {
       navigate('/topastrologers');
     }
+    if(label === 'Horoscope'){
+      navigate('/horoscope')
+    }
   };
 
   return (

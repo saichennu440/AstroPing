@@ -2,7 +2,7 @@
 import React from 'react';
 import './TodaysPrediction.css';
 
-import aries from '/assets/aries.png';
+import aries from '/assets/ariess.png';
 import taurus from '/assets/Group 84.png';
 import gemini from '/assets/Group 85.png';
 import cancer from '/assets/Group 87.png';
@@ -13,7 +13,7 @@ import scorpio from '/assets/Virgo Horoscope.png';
 import sagittarius from '/assets/Leo Horoscope.png';
 import capricorn from '/assets/Capricorn Horoscope.png';
 import aquarius from '/assets/Aquarius Horoscope.png';
-import pisces from '/assets/pisces.png';
+import pisces from '/assets/piscess.png';
 
 const predictions = [
   { image: aries,      sign: 'Aries' },

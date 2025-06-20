@@ -1,0 +1,270 @@
+/* ================================================================= */
+/*                         AriesPage (Sign Detail)                   */
+/* ================================================================= */
+
+/* ==== Breadcrumb ==== */
+.breadcrumb {
+  padding: 10px 20px;
+  background: #fafafa;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  //margin-top:70px;
+}
+.breadcrumb a {
+  color: #555;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.breadcrumb a:hover {
+  color: #FF6B35;
+}
+.breadcrumb strong {
+  color: #FF6B35;
+}
+
+/* ==== Main Wrapper ==== */
+.sign-detail-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+  /* leave a bit of top margin so header never covers content */
+  margin-top: 24px;
+}
+
+/* ==== Top Panel ==== */
+.detail-top {
+  background: #fff5e6;
+  border-radius: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+.image-and-title {
+  flex: 1 1 280px;
+  text-align: center;
+}
+.detail-banner {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  object-fit: cover;
+}
+.image-and-title h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* ==== Variant Cards ==== */
+.variant-grid {
+  flex: 2 1 600px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px,1fr));
+  gap: 16px;
+}
+.variant-card {
+  background: #fff;
+  border: 1px solid #ffccaa;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 0.95rem;
+  color: #333;
+  text-decoration: none;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+.variant-card .icon-placeholder {
+  font-size: 1.5rem;
+  margin-bottom: 6px;
+}
+.variant-card:hover,
+.variant-card.active {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transform: translateY(-3px);
+  border-color: #FF6B35;
+}
+
+/* ==== Calendar Buttons ==== */
+.detail-calendar {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 16px 0 32px;
+}
+.detail-calendar .cal-btn {
+  flex: 1 1 120px;
+  padding: 10px 10px;
+  background: #fff;
+  border: 1px solid #FF6B35;
+  border-radius: 24px;
+  font-size: 0.95rem;
+  color: #333;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.2s, color 0.2s;
+}
+.detail-calendar .cal-btn:hover {
+  background: #FF6B35;
+  color: #fff;
+}
+
+/* ==== Today’s Detail ==== */
+.today-detail {
+background:#FFEBDA;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 32px;
+}
+.today-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.today-detail-header h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
+}
+.today-detail-header span {
+  font-size: 0.95rem;
+  color: #555;
+}
+.today-detail p {
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 24px;
+}
+
+/* Stats grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat( minmax(1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+  background:#fff;
+  
+}
+.stats-grid > div {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px dashed #ddd;
+  padding: 8px 10px;
+}
+.stats-grid > div strong {
+  font-weight: 600;
+  color: #333;
+}
+.stats-grid > div span {
+  color: #FF6B35;
+}
+
+/* Remedy line */
+.remedy {
+  font-style: italic;
+  color: #333;
+}
+
+/* ==== General Remedies ==== */
+.general-remedies {
+  margin-bottom: 32px;
+}
+.general-remedies h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+/* icons row */
+.remedy-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 154px;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.remedy-card {
+  flex: 1 1 80px;
+  max-width: 100px;
+  text-decoration: none;
+  color: #333;
+  text-align: center;
+}
+.remedy-card .remedy-icon {
+  font-size: 1.8rem;
+  background: #fff5e6;
+  padding: 12px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+/* bottom links */
+.remedy-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  
+}
+.remedy-links a {
+  text-decoration: none;
+  color:rgb(14, 13, 13);
+  font-weight: 500;
+  transition: text-decoration 0.2s;
+  border: 1px solid #FF6B35;
+   border-radius: 24px;
+   padding: 10px 10px;
+   margin-top:20px;
+}
+.remedy-links a:hover {
+  text-decoration: underline;
+}
+
+/* ==== Long Detail Text ==== */
+.detail-text {
+  margin-bottom: 32px;
+}
+.detail-text p {
+  line-height: 1.6;
+  color: #444;
+}
+
+/* ==== Responsive ==== */
+@media (max-width: 1024px) {
+  .variant-grid { gap: 12px; }
+  .detail-calendar .cal-btn { flex: 1 1 100px; }
+}
+@media (max-width: 768px) {
+  .detail-top { flex-direction: column; }
+  .variant-grid { grid-template-columns: repeat(2,1fr); }
+  .stats-grid { grid-template-columns: 1fr; }
+  .detail-calendar { gap: 8px; }
+  /* ==== Breadcrumb ==== */
+.breadcrumb {
+  padding: 10px 20px;
+  background: #fafafa;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top:70px;
+}
+}
+@media (max-width: 480px) {
+  .variant-grid { grid-template-columns: 1fr; }
+  .remedy-icons { gap: 16px; }
+  .remedy-links { gap: 12px; }
+}

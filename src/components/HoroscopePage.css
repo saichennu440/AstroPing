@@ -1,0 +1,222 @@
+/* Overall page background (give a gentle off‑white behind the panel) */
+body {
+  background: #fef7f0;
+  
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  padding: 16px 20px;
+  font-size: 0.9rem;
+  background: #fafafa;
+  margin-top:120px;
+}
+
+/* THE WHITE PANEL */
+.main-horoscope-section {
+  display: flex;
+  flex-wrap: wrap;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin: 80px 20px 40px;     /* give space under your sticky header */
+  overflow: hidden;
+  margin-top:0px;
+}
+
+/* LEFT HALF: intro & calendar buttons */
+.left-panel {
+  flex: 1 1 320px;
+  max-width: 400px;
+  padding: 32px;
+  border-right: 1px solid #f0f0f0;
+  background:#FFEBDA;
+}
+.hero-horoscope-image {
+  margin-bottom: 24px;
+}
+.hero-horoscope-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
+.left-panel h2 {
+  margin-bottom: 12px;
+  font-size: 1.5rem;
+}
+.left-panel p {
+  margin-bottom: 24px;
+  color: #555;
+  line-height: 1.5;
+}
+.calendar-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+.calendar-buttons .cal-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: #fff;
+  border: 1px solid #ff6b35;
+  border-radius: 24px;
+  font-size: 0.9rem;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.calendar-buttons .cal-btn .arrow {
+  font-weight: bold;
+}
+.calendar-buttons .cal-btn:hover {
+  background: #ff6b35;
+  color: #fff;
+}
+
+
+/* RIGHT HALF: zodiac grid */
+.right-panel {
+  flex: 2 1 480px;
+  padding: 32px;
+  
+}
+.zodiac-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.zodiac-card {
+  background:#FFEBDA;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+.zodiac-card:hover,
+.zodiac-card.active {
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  border-color: #ff6b35;
+  transform: translateY(-4px);
+}
+.zodiac-icon {
+  width: 74px;
+  height: 74px;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
+.zodiac-card p {
+  margin: 6px 0;
+  font-weight: 500;
+  font-size: 1rem;
+}
+.zodiac-card span {
+  font-size: 0.85rem;
+  color: #777;
+}
+.daily-movement{
+    background-color:#FFEBDA;
+}
+/* ——— Subsequent sections ——— */
+.subsection,
+.daily-movement,
+.info-block,
+.faq-section {
+  margin: 0 20px 40px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  padding: 24px 32px;
+  
+}
+
+.subsection h3,
+.info-block h3,
+.daily-movement .movement-header h4,
+.faq-section h4 {
+  margin-bottom: 16px;
+}
+
+/* icon row (More Horoscopes) */
+.icon-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+.icon-row > div {
+  flex: 1 1 120px;
+  max-width: 160px;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+}
+
+/* FAQ items */
+.faq-item {
+  border: 1px solid #ffd8b0;
+  border-radius: 4px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+.faq-item summary {
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* ——— Responsive breakpoints ——— */
+@media (max-width: 1024px) {
+  .zodiac-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .zodiac-icon {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-horoscope-section {
+    flex-direction: column;
+    margin: 0px 12px 24px;
+  }
+  .left-panel {
+    max-width: 100%;
+    border-right: none;
+    border-bottom: 1px solidrgb(234, 233, 231);
+    margin-bottom: 24px;
+  }
+  .right-panel {
+    padding-top: 0;
+  }
+  .zodiac-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .zodiac-icon {
+    width: 78px;
+    height: 78px;
+  }
+}
+
+@media (max-width: 480px) {
+  .zodiac-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .zodiac-card {
+    padding: 12px;
+  }
+  .zodiac-icon {
+    width: 80px;
+    height: 80px;
+  }
+}

@@ -6,7 +6,7 @@ import {
   Routes,
   Route
 } from 'react-router-dom'
-
+import HoroscopePage from './components/HoroscopePage'
 import Header from './components/Header'
 import Hero from './components/Hero'
 // import Services from './components/Services'
@@ -21,7 +21,7 @@ import Stats from './components/Stats'
 import Astrologers from './components/Astrologers'
 import WhyHoroscope from './components/WhyHoroscope'
 import Footer from './components/Footer'
-
+import AriesPage from './components/Pages/AriesPage'
 import SignInModal from './components/SignInModal'
 import ProfileModal from './components/ProfileModal'
 import AllTopAstrologers from './components/AllTopAstrologers'
@@ -109,11 +109,10 @@ function App() {
     <Router>
       {/* Route‑aware rendering */}
       <Routes>
-        <Route
-          path="/"
-          element={<HomePage />}
-        />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/horoscope" element={<HoroscopePage />} />
         <Route path="/astrologers" element={<AllAstrologers/>}/>
+        <Route path="/horoscope/:sign" element={<AriesPage />} />
         <Route
           path="/topastrologers"
           element={<AllTopAstrologers />}
