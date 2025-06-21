@@ -58,7 +58,7 @@ export default function ProfileModal({ isOpen, onClose, user, onUpdate }) {
     setLoading(true)
     setError('')
     try {
-      await axios.post(`${API_BASE}/api/user/update-user`, form)
+      await axios.post(`${API_BASE}/user/update-user`, form)
       onUpdate()
       onClose()
     } catch (err) {
