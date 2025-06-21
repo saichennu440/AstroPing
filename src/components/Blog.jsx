@@ -35,7 +35,7 @@ export default function Blog() {
     return (
       <section className="blog">
         <div className="container">
-          <p>Loading blogs…</p>
+         <div className="spinner" />
         </div>
       </section>
     )
