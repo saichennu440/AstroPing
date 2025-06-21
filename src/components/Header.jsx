@@ -14,7 +14,7 @@ const NAV_ITEMS = [
   { label: 'Numerology', hasDropdown: false },
   { label: 'Tarot', hasDropdown: false },
   { label: 'Free Readings', hasDropdown: true },
-  { label: 'Blog', hasDropdown: false },
+  { label: 'Blog', hasDropdown: false, path:'/blogs' },
   { label: 'Session Booking', hasDropdown: false },
 ]
 

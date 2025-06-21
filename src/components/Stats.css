@@ -1,10 +1,10 @@
-.stats {
+.statss {
   background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
   //color: white;
   //padding: 50px 0;
 }
 
-.stats-grid {
+.statss-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 60px;
@@ -40,7 +40,7 @@
     padding: 40px 0;
   }
 
-  .stats-grid {
+  .statss-grid {
     gap: 40px;
   }
 

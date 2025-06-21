@@ -1,0 +1,188 @@
+/* src/components/AllBlogs.css */
+
+/* ===== Section & Container ===== */
+.all-blogs.section {
+  padding: 60px 0;
+  background: #fff;
+  margin-top:80px;
+}
+
+.all-blogs .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ===== Section Header ===== */
+.all-blogs .section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.all-blogs .section-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.all-blogs .view-all {
+  font-size: 0.95rem;
+  color: #FF6B35;
+  border: 1px solid #FF6B35;
+  padding: 6px 14px;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.all-blogs .view-all:hover {
+  background: rgba(255, 107, 53, 0.1);
+}
+
+/* ===== Blog Grid ===== */
+.all-blogs .blog-grid {
+  display: grid;
+  gap: 24px;
+  /* 3 columns on desktop */
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* ===== Blog Card ===== */
+.all-blogs .blog-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.all-blogs .blog-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.08);
+}
+
+/* ===== Blog Image & Category ===== */
+.all-blogs .blog-image {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 aspect */
+  overflow: hidden;
+}
+
+.all-blogs .blog-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.all-blogs .blog-category {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  /* background: rgba(0,0,0,0.7); */
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+/* ===== Blog Content ===== */
+.all-blogs .blog-content {
+  padding: 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.all-blogs .blog-content h3 {
+  font-size: 1.1rem;
+  margin: 0 0 12px;
+  color: #333;
+}
+
+.all-blogs .blog-content h3 a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.all-blogs .blog-content h3 a:hover {
+  color: #FF6B35;
+}
+
+/* ===== Blog Meta ===== */
+.all-blogs .blog-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.all-blogs .blog-meta span {
+  display: inline-block;
+}
+
+/* ===== “View More” Button ===== */
+.all-blogs .btn.outline {
+  display: inline-block;
+  margin: 32px auto 0;
+  padding: 10px 20px;
+  border: 1px solid #FF6B35;
+  color: #FF6B35;
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.all-blogs .btn.outline:hover {
+  background: #FF6B35;
+  color: #fff;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+  .all-blogs .blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .all-blogs.section {
+    padding: 0px 0;
+    
+  }
+  .all-blogs .section-header {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    margin-bottom:15px;
+    
+  }
+  .all-blogs .blog-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .all-blogs .btn.outline {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .all-blogs .container {
+    padding: 0 10px;
+  }
+  .all-blogs .blog-content h3 {
+    font-size: 1rem;
+  }
+}

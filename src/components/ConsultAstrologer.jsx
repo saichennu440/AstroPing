@@ -1,47 +1,50 @@
+import React from 'react'
 import './ConsultAstrologer.css'
 
-const ConsultAstrologer = () => {
-  const consultTypes = [
-    {
-      icon: '💬',
-      title: 'Live Compatibility',
-      description: 'Chat with astrologers in real-time'
-    },
-    {
-      icon: '💑',
-      title: 'Marriage & Birth',
-      description: 'Get marriage and birth chart analysis'
-    },
-    {
-      icon: '📋',
-      title: 'Career',
-      description: 'Professional guidance and career advice'
-    },
-    {
-      icon: '📍',
-      title: 'Travel Astrologer',
-      description: 'Travel predictions and suggestions'
-    },
-    {
-      icon: '🔄',
-      title: 'Reincarnation',
-      description: 'Past life and spiritual guidance'
-    }
-  ]
+const consultTypes = [
+  {
+    bg: '/assets/card-bg-1.png',       // ← your background image
+    icon: '/assets/heart.png',   // ← your icon
+    title: 'Love & Relationship',
+  },
+  {
+    bg: '/assets/card-bg-1.png',
+    icon: '/assets/marriage.png',
+    title: 'Marriage & Kundli',
+  },
+  {
+    bg: '/assets/card-bg-1.png',
+    icon: '/assets/career.png',
+    title: 'Career',
+  },
+  {
+    bg: '/assets/card-bg-1.png',
+    icon: '/assets/women.png',
+    title: 'Women Astrologer',
+  },
+  {
+    bg: '/assets/card-bg-1.png',
+    icon: '/assets/business.png',
+    title: 'Business',
+  },
+]
 
+export default function ConsultAstrologer() {
   return (
     <section className="consult-astrologer section">
       <div className="container">
         <h2 className="section-title">Consult The Right Astrologer For You</h2>
-        
         <div className="consult-grid">
-          {consultTypes.map((type, index) => (
-            <div key={index} className="consult-card card">
+          {consultTypes.map(({ bg, icon, title }, i) => (
+            <div
+              key={i}
+              className="consult-card"
+              style={{ backgroundImage: `url(${bg})` }}
+            >
               <div className="consult-icon">
-                <span>{type.icon}</span>
+                <img src={icon} alt={title} />
               </div>
-              <h3>{type.title}</h3>
-              <p>{type.description}</p>
+              <h3 className="tittlee">{title}</h3>
             </div>
           ))}
         </div>
@@ -49,5 +52,3 @@ const ConsultAstrologer = () => {
     </section>
   )
 }
-
-export default ConsultAstrologer

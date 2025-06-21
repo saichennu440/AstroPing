@@ -6,6 +6,7 @@ import {
   Routes,
   Route
 } from 'react-router-dom'
+import ScrollToTop from './components/ScrollToTop'
 import HoroscopePage from './components/HoroscopePage'
 import Header from './components/Header'
 import Hero from './components/Hero'
@@ -17,11 +18,12 @@ import OurServices from './components/OurServices'
 import ConsultAstrologer from './components/ConsultAstrologer'
 import FreeServices from './components/FreeServices'
 import Blog from './components/Blog'
+import AllBlogs from './components/AllBlogs'
 import Stats from './components/Stats'
 import Astrologers from './components/Astrologers'
 import WhyHoroscope from './components/WhyHoroscope'
 import Footer from './components/Footer'
-import AriesPage from './components/Pages/AriesPage'
+import SignDetailPage from './components/Pages/SignDetailPage'
 import SignInModal from './components/SignInModal'
 import ProfileModal from './components/ProfileModal'
 import AllTopAstrologers from './components/AllTopAstrologers'
@@ -107,12 +109,15 @@ function App() {
 
   return (
     <Router>
+       <ScrollToTop/>
       {/* Route‑aware rendering */}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/horoscope" element={<HoroscopePage />} />
         <Route path="/astrologers" element={<AllAstrologers/>}/>
-        <Route path="/horoscope/:sign" element={<AriesPage />} />
+        <Route path="/horoscope/:sign" element={<SignDetailPage/>} />
+        <Route path="/horoscope/:sign/:day" element={<SignDetailPage />} />
+        <Route path="/blogs" element={<AllBlogs />} />
         <Route
           path="/topastrologers"
           element={<AllTopAstrologers />}

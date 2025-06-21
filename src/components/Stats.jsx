@@ -15,9 +15,9 @@ const Stats = () => {
   ]
 
   return (
-    <section className="stats">
+    <section className="statss">
       <div className="container">
-        <div className="stats-grid">
+        <div className="statss-grid">
           {stats.map((stat, index) => (
             <div key={index} className="stat-item">
               <div className="stat-number">{stat.number}</div>

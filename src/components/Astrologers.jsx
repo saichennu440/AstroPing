@@ -45,7 +45,7 @@ const Astrologers = () => {
             View All
           </button>
         </div>
-        {loading && <p>Loading astrologers...</p>}
+        {loading && <div className="spinner" />}
         {error && <p className="error">{error}</p>}
 
         <div className="astrologers-showcase">

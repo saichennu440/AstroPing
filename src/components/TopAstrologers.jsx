@@ -50,7 +50,7 @@ useEffect(() => {
           <h2 className="section-title">Top Online Astrologers</h2>
           <a className="view-all" onClick={() => navigate('/topastrologers')}>View All</a>
         </div>
-      {loading && <p>Loading astrologers...</p>}
+      {loading &&<div className="spinner" />}
         {error && <p className="error">{error}</p>}
 
         <div className="slider-wrapper">

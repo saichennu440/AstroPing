@@ -78,7 +78,7 @@ import Footer from '../components/Footer'
           <h2 className="section-title">All Astrologers</h2>
         </div>
 
-        {loading && <p>Loading astrologers...</p>}
+        {loading && <div className="spinner" />}
         {error && <p className="error">{error}</p>}
 
         <div className="astrologers-grid">

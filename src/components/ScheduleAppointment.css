@@ -3,38 +3,24 @@
 .schedule-appointment {
   padding: 50px 0;
 }
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
 .section-header.spaced {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 24px;
-  flex-wrap: wrap;
-  gap: 12px;
 }
-
 .section-title {
   font-size: 1.75rem;
-  margin: 0;
+  color: #333;
 }
-
 .view-all {
-  font-size: 0.95rem;
-  color: #FF6B35;
-  border: 1px solid #FF6B35;
   padding: 6px 12px;
+  border: 1px solid #FF6B35;
   border-radius: 20px;
+  color: #FF6B35;
   text-decoration: none;
   transition: background 0.2s;
-  white-space: nowrap;
 }
-
 .view-all:hover {
   background: rgba(255, 107, 53, 0.1);
 }
@@ -42,169 +28,70 @@
 .appointments-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 55px;
-  justify-items: center;
+  gap: 30px;
 }
-
-/* ==== IMAGE-ONLY CARD ==== */
 .appointment-card {
-  width: 100%;
-  padding-top: 75%;          /* 4:3 aspect */
   position: relative;
+  padding-top: 56.25%; /* 16:9 ratio */
   background-size: cover;
   background-position: center;
-  border-radius: 0.5rem;
+  border-radius: 12px;
   overflow: hidden;
-
-  /* transition for transform & overlay */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
-
-/* semi-transparent overlay */
-.appointment-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0);
-  transition: background 0.3s ease;
-}
-
-/* hover state: scale up + deepen shadow + overlay tint */
 .appointment-card:hover {
   transform: scale(1.03);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+.appointment-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  //background: rgba(255,255,255,0.85);
+}
+.appointment-icon {
+  width: 65px;
+  height: 48px;
+  margin-bottom: 12px;
+}
+.appointment-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
 }
 
-.appointment-card:hover::after {
-  background: rgba(0, 0, 0, 0.1);
-}
-
-/* ==== RESPONSIVE GRID BREAKPOINTS ==== */
-
-/* Large tablets / small desktops */
+/* Responsive */
 @media (max-width: 1024px) {
-  .schedule-appointment {
-    padding: 40px 20px;
-  }
-  .appointments-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-  }
-  .appointment-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  .appointments-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
 }
-
-.appointment-card:hover::after {
-  background: rgba(0, 0, 0, 0.1);
-}
-}
-
-/* Standard tablets */
 @media (max-width: 768px) {
-  .schedule-appointment {
-    padding: 30px 15px;
-  }
-  .section-header.spaced {
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: center;
-    width: 100%;
-  }
   .appointments-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 10px;      /* give room for scrollbar */
+    scroll-snap-type: x mandatory;
   }
-  .view-all {
-    font-size: 0.9rem;
-    padding: 8px 16px;
-    align-self: center;
+  .appointment-card {
+    flex: 0 0 80%;             /* show ~one card + peek of next */
+    scroll-snap-align: start;
   }
-  .appointment-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+   .view-all { align-self: center; }
 }
-
-.appointment-card:hover::after {
-  background: rgba(0, 0, 0, 0.1);
-}
-}
-
-/* Small tablets */
-@media (max-width: 640px) {
-  .appointments-grid {
-    gap: 25px;
-  }
-}
-
-/* Mobile landscape and larger mobiles */
-@media (max-width: 576px) {
-  .schedule-appointment {
-    padding: 25px 20px;
-  }
-  .appointments-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 25px 20px;
-    max-width: 100%;
-    margin: 0 auto;
-  }
-  .appointment-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-}
-
-.appointment-card:hover::after {
-  background: rgba(0, 0, 0, 0.1);
-}
-}
-
-/* Mobile portrait */
 @media (max-width: 480px) {
-  .schedule-appointment {
-    padding: 20px 20px;
+   .appointments-grid {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scroll-snap-type: x mandatory;
   }
-  .section-header.spaced {
-    margin-bottom: 25px;
+  .appointment-card {
+    flex: 0 0 85%;
+    scroll-snap-align: start;
   }
-  .appointments-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px 15px;
-    margin: 0 auto;
-  }
-  .view-all {
-    font-size: 0.85rem;
-    padding: 6px 12px;
-  }
-  .appointment-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-}
-
-.appointment-card:hover::after {
-  background: rgba(0, 0, 0, 0.1);
-}
-}
-
-/* Extra-small mobiles */
-@media (max-width: 360px) {
-  .schedule-appointment {
-    padding: 15px 15px;
-  }
-  .appointments-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px 12px;
-    margin: 0 auto;
-  }
-  .view-all {
-    font-size: 0.8rem;
-    padding: 5px 10px;
-  }
-  .appointment-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-}
-
-.appointment-card:hover::after {
-  background: rgba(0, 0, 0, 0.1);
-}
+  .schedule-appointment { padding: 30px 15px; }
 }
