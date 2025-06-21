@@ -3,7 +3,7 @@ import { useState, useRef, useLayoutEffect } from 'react'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 
-const API_BASE = import.meta.env.VITE_API_BASEE
+const API_BASE = import.meta.env.VITE_API_BASE
 const DOMESTIC_CODE = '+91'
 const OTP_LENGTH = 4  // adjust if your backend changes
 
@@ -33,13 +33,13 @@ export default function SignInModal({ isOpen, onClose, onLogin }) {
 
   const sendEndpoint =
     countryCode === DOMESTIC_CODE
-      ? '/api/user/send-otp'
-      : '/api/user/send-otp-international'
+      ? '/user/send-otp'
+      : '/user/send-otp-international'
 
   const verifyEndpoint =
     countryCode === DOMESTIC_CODE
-      ? '/api/user/otp-verify'
-      : '/api/user/verify-inernational-OTP'
+      ? '/user/otp-verify'
+      : '/user/verify-inernational-OTP'
 
   const handleSendOtp = async e => {
     e.preventDefault()
