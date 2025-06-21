@@ -53,7 +53,7 @@ function App() {
   // Fetch user profile
   const fetchCurrentUser = async () => {
     try {
-      const { data } = await axios.get(`${API_BASE}/api/user`)
+      const { data } = await axios.get(`${API_BASE}/user`)
       if (data.success) {
         setCurrentUser(data.data)
       }
