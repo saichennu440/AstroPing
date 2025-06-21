@@ -63,7 +63,9 @@ export default function SignDetailPage() {
         </nav>
 
         {loading && (
-          <div className="spinner" />
+          <p className="loading">
+            Loading your {title} {day} horoscope…
+          </p>
         )}
         {error && <p className="error">{error}</p>}
 
