@@ -33,13 +33,13 @@ export default function SignInModal({ isOpen, onClose, onLogin }) {
 
   const sendEndpoint =
     countryCode === DOMESTIC_CODE
-      ? '/api/user/send-otp'
-      : '/api/user/send-otp-international'
+      ? '/user/send-otp'
+      : '/user/send-otp-international'
 
   const verifyEndpoint =
     countryCode === DOMESTIC_CODE
-      ? '/api/user/otp-verify'
-      : '/api/user/verify-inernational-OTP'
+      ? '/user/otp-verify'
+      : '/user/verify-inernational-OTP'
 
   const handleSendOtp = async e => {
     e.preventDefault()
