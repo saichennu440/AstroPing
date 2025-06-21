@@ -16,7 +16,7 @@ export default function AllBlogs() {
   const fetchBlogs = async (pageNum) => {
     setLoading(true)
     try {
-      const res = await axios.post(`${API_BASE}/api/blog/get-blogs`, {
+      const res = await axios.post(`${API_BASE}/blog/get-blogs`, {
         page: pageNum,
         limit: 10
       })

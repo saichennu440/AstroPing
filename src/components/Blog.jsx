@@ -13,7 +13,7 @@ export default function Blog() {
     setLoading(true)
     setError('')
     axios
-      .post(`${API_BASE}/api/blog/get-blogs`, {
+      .post(`${API_BASE}/blog/get-blogs`, {
         page: 1,
         limit: 5
       })
