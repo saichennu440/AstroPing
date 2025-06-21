@@ -30,7 +30,7 @@ export default function SignDetailPage() {
     setError('')
 
     axios
-      .get(`${API_BASE}/api/horoscope/get-horoscope`, {
+      .get(`${API_BASE}/get-horoscope`, {
         params: { sign: title, day }
       })
       .then(res => {
