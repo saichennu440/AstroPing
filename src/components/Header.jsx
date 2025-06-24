@@ -6,16 +6,16 @@ import { useNavigate } from 'react-router-dom'
 // nav items with dropdown indicator
 const NAV_ITEMS = [
   { label: 'Home', hasDropdown: false, path: '/'  },
-  { label: 'Consult Now', hasDropdown: false },
+  { label: 'Consult Now', hasDropdown: false, path: '/topastrologers' },
   { label: 'Horoscope', hasDropdown: false, path: '/horoscope' },
-  { label: 'Year 2025', hasDropdown: true },
-  { label: 'Panchang', hasDropdown: true },
-  { label: 'Kundli', hasDropdown: true },
-  { label: 'Numerology', hasDropdown: false },
-  { label: 'Tarot', hasDropdown: false },
+  { label: 'Year 2025', hasDropdown: true, path:'/coming'},
+  { label: 'Panchang', hasDropdown: true, path: '/panchang' },
+  { label: 'Kundli', hasDropdown: false, path: '/panchang/kundli' },
+  //{ label: 'Numerology', hasDropdown: false },
+ { label: 'Tarot', hasDropdown: false, path:'/tarot' },
   { label: 'Free Readings', hasDropdown: true },
   { label: 'Blog', hasDropdown: false, path:'/blogs' },
-  { label: 'Session Booking', hasDropdown: false },
+  //{ label: 'Session Booking', hasDropdown: false },
 ]
 
 export default function Header({
@@ -443,6 +443,7 @@ background-color: transparent;
               >
                 <path d="M8 0a8 8 0 1 0 8 8A8 8 0 0 0 8 0zM1.083 8a6.917 6.917 0 0 1 12.272-4.71v1.345H9.625A13.32 13.32 0 0 0 8 8c.61.01 1.226.07 1.973.365l1.756.545v1.345H3.356a6.91 6.91 0 0 1-2.273-2.255zM8 14.917A6.917 6.917 0 0 1 1.083 8h1.345v1.345c.065.01.13.026.195.038a13.32 13.32 0 0 0 4.382 3.2v1.345zm1.963-1.209a13.33 13.33 0 0 0 4.383-3.2c.065-.011.13-.027.195-.038V8h1.345A6.917 6.917 0 0 1 8 14.917v-1.209z"/>
               </svg>
+              
               <span>Eng</span>
             </button>
 

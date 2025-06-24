@@ -11,7 +11,7 @@ import './SignDetailPage.css'
 
 const API_BASE = import.meta.env.VITE_API_BASE
 
-export default function SignDetailPage() {
+export default function SignDetailPage({ user, onSignInClick, onProfileClick, onLogout }) {
   const { sign, day: dayParam } = useParams()
   // Normalize Day
   const day = dayParam
@@ -53,7 +53,12 @@ export default function SignDetailPage() {
 
   return (
     <>
-      <Header />
+      <Header 
+         user={user}
+        onSignInClick={onSignInClick}
+        onProfileClick={onProfileClick}
+        onLogout={onLogout}
+      />
 
       <div className="sign-detail-page">
         <nav className="breadcrumb">

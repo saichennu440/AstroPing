@@ -5,6 +5,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import TopAstrologers from '../components/TopAstrologers'
 import Blogs from '../components/Blog'
+import { useNavigate } from 'react-router-dom';
 import './HoroscopePage.css'
 
 /**
@@ -13,8 +14,8 @@ import './HoroscopePage.css'
 const ZODIAC_IMAGES = {
   Aries:     '/assets/ariess.png',
   Taurus:    '/assets/Group 87.png',
-  Gemini:    '/assets/Group 84.png',
-  Cancer:    '/assets/Group 85.png',
+  Gemini:    '/assets/Group 84.png',
+  Cancer:    '/assets/Group 85.png',
   Leo:       '/assets/Leo Horoscope.png',
   Virgo:     '/assets/Virgo Horoscope.png',
   Scorpio:   '/assets/Scorpio Horoscope.png',
@@ -24,12 +25,17 @@ const ZODIAC_IMAGES = {
   Pisces:    '/assets/piscess.png',
 }
 
-export default function HoroscopePage() {
+export default function HoroscopePage({ user, onSignInClick, onProfileClick, onLogout }) {
   const signs = Object.keys(ZODIAC_IMAGES)
 
   return (
     <>
-      <Header />
+      <Header 
+         user={user}
+        onSignInClick={onSignInClick}
+        onProfileClick={onProfileClick}
+        onLogout={onLogout}
+      />
 
       <div className="breadcrumb">
         Home &gt; <strong>Horoscope</strong>

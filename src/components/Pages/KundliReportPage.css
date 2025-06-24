@@ -1,0 +1,88 @@
+===== KundliReportPage.css =====
+
+.kundli-report-page {
+  max-width: 1200px;
+  margin-top:50px ;
+  padding: 20px;
+}
+
+.breadcrumb {
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+.breadcrumb a {
+  color: #555;
+  text-decoration: none;
+}
+.breadcrumb .current {
+  color: #FF6B35;
+}
+
+.report-banner {
+  position: relative;
+  margin-bottom: 24px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.report-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.report-banner h1 {
+  position: absolute;
+  bottom: 16px;
+  left: 24px;
+  color: white;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+  font-size: 2rem;
+}
+
+.report-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  border-bottom: 2px solid #eee;
+  margin-bottom: 24px;
+}
+.report-tabs button {
+  background: none;
+  border: none;
+  padding: 8px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #555;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.report-tabs button.active {
+  color: #FF6B35;
+  border-color: #FF6B35;
+}
+
+.report-content {
+  min-height: 200px;
+  padding: 16px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.json-block {
+  font-family: monospace;
+  font-size: 0.9rem;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 768px) {
+  .report-tabs {
+    gap: 8px;
+  }
+  .report-tabs button {
+    padding: 6px 12px;
+    font-size: 0.875rem;
+  }
+  .report-banner h1 {
+    font-size: 1.5rem;
+  }
+}

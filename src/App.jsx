@@ -6,11 +6,12 @@ import {
   Routes,
   Route
 } from 'react-router-dom'
+import TarotPage from './components/Pages/TarotPage'
 import ScrollToTop from './components/ScrollToTop'
 import HoroscopePage from './components/HoroscopePage'
 import Header from './components/Header'
 import Hero from './components/Hero'
-// import Services from './components/Services'
+import PanchangPage from './components/PanchangPage'
 import TopAstrologers from './components/TopAstrologers'
 import ScheduleAppointment from './components/ScheduleAppointment'
 import TodaysPrediction from './components/TodaysPrediction'
@@ -28,20 +29,20 @@ import SignInModal from './components/SignInModal'
 import ProfileModal from './components/ProfileModal'
 import AllTopAstrologers from './components/AllTopAstrologers'
 import AllAstrologers from './components/AllAstrologers'
+import KundliPage from './components/Pages/KundliPage'
+import KundliReportPage from './components/Pages/KundliReportPage'
+import cooming from './components/cooming'
+
 import './components/SignInForm.css'
 import './App.css'
 
 const API_BASE = import.meta.env.VITE_API_BASE
 
 function App() {
-  // Sign‑in modal
   const [showSignIn, setShowSignIn] = useState(false)
-  // Profile modal
   const [showProfile, setShowProfile] = useState(false)
-  // Logged‑in user
   const [currentUser, setCurrentUser] = useState(null)
 
-  // On mount, check for existing JWT and fetch user
   useEffect(() => {
     const token = localStorage.getItem('jwt')
     if (token) {
@@ -50,7 +51,6 @@ function App() {
     }
   }, [])
 
-  // Fetch user profile
   const fetchCurrentUser = async () => {
     try {
       const { data } = await axios.get(`${API_BASE}/user`)
@@ -63,7 +63,6 @@ function App() {
     }
   }
 
-  // Handle successful login
   const handleLogin = (token) => {
     localStorage.setItem('jwt', token)
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
@@ -71,7 +70,6 @@ function App() {
     fetchCurrentUser()
   }
 
-  // Handle logout
   const handleLogout = () => {
     localStorage.removeItem('jwt')
     delete axios.defaults.headers.common['Authorization']
@@ -79,18 +77,9 @@ function App() {
     setShowProfile(false)
   }
 
-  // The “home” page layout, pulled into its own component for clarity
   const HomePage = () => (
-    <div className="App">
-      <Header
-        user={currentUser}
-        onSignInClick={() => setShowSignIn(true)}
-        onProfileClick={() => setShowProfile(true)}
-        onLogout={handleLogout}
-      />
-      <main>
+    <main>
       <Hero />
-      {/* <Services /> */}
       <TopAstrologers />
       <ScheduleAppointment />
       <TodaysPrediction />
@@ -98,34 +87,112 @@ function App() {
       <ConsultAstrologer />
       <FreeServices />
       <Blog />
-      
       <Stats />
       <Astrologers />
       <WhyHoroscope />
-      </main>
-      <Footer />
-    </div>
+      
+    </main>
   )
 
   return (
     <Router>
-       <ScrollToTop/>
-      {/* Route‑aware rendering */}
+      <ScrollToTop />
+
+      {/* ✅ Header on all pages */}
+      <Header
+        user={currentUser}
+        onSignInClick={() => setShowSignIn(true)}
+        onProfileClick={() => setShowProfile(true)}
+        onLogout={handleLogout}
+      />
+
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/horoscope" element={<HoroscopePage />} />
-        <Route path="/astrologers" element={<AllAstrologers/>}/>
-        <Route path="/horoscope/:sign" element={<SignDetailPage/>} />
-        <Route path="/horoscope/:sign/:day" element={<SignDetailPage />} />
-        <Route path="/blogs" element={<AllBlogs />} />
+<Route
+  path="/horoscope"
+  element={
+    <HoroscopePage
+      user={currentUser}
+      onSignInClick={() => setShowSignIn(true)}
+      onProfileClick={() => setShowProfile(true)}
+      onLogout={handleLogout}
+    />
+  }
+/>
+        <Route path="/astrologers" element={<AllAstrologers 
+        user={currentUser}
+      onSignInClick={() => setShowSignIn(true)}
+      onProfileClick={() => setShowProfile(true)}
+      onLogout={handleLogout}
+        />} />
+        <Route path="/horoscope/:sign" element={<SignDetailPage 
+            user={currentUser}
+      onSignInClick={() => setShowSignIn(true)}
+      onProfileClick={() => setShowProfile(true)}
+      onLogout={handleLogout}
+        />} />
+        <Route path="/horoscope/:sign/:day" element={<SignDetailPage
+          user={currentUser}
+      onSignInClick={() => setShowSignIn(true)}
+      onProfileClick={() => setShowProfile(true)}
+      onLogout={handleLogout}
+        />} />
+        <Route path="/blogs" element={<AllBlogs 
+          user={currentUser}
+      onSignInClick={() => setShowSignIn(true)}
+      onProfileClick={() => setShowProfile(true)}
+      onLogout={handleLogout}
+        />} />
+        <Route path="/panchang/kundli" element={<KundliPage 
+        user={currentUser}
+      onSignInClick={() => setShowSignIn(true)}
+      onProfileClick={() => setShowProfile(true)}
+      onLogout={handleLogout}
+        />} />
+        <Route path="/kundli/report" element={<KundliReportPage
+         user={currentUser}
+      onSignInClick={() => setShowSignIn(true)}
+      onProfileClick={() => setShowProfile(true)}
+      onLogout={handleLogout}
+        />} />
+        <Route path="/topastrologers" element={<AllTopAstrologers
+        user={currentUser}
+      onSignInClick={() => setShowSignIn(true)}
+      onProfileClick={() => setShowProfile(true)}
+      onLogout={handleLogout}
+        />} />
+
+        <Route path="/coming" element={<cooming />} />
+
         <Route
-          path="/topastrologers"
-          element={<AllTopAstrologers />}
-        />
-        
+         path="/panchang"
+         element={
+           <PanchangPage
+             user={currentUser}
+             onSignInClick={() => setShowSignIn(true)}
+             onProfileClick={() => setShowProfile(true)}
+             onLogout={handleLogout}
+           />
+         }
+       />
+
+       <Route
+  path="/tarot"
+  element={
+    <TarotPage
+      user={currentUser}
+      onSignInClick={() => setShowSignIn(true)}
+      onProfileClick={() => setShowProfile(true)}
+      onLogout={handleLogout}
+    />
+  }
+/>
       </Routes>
 
-      {/* Modals live outside of <Routes> so they’re always mountable */}
+      {/* ✅ Footer on all pages */}
+      
+
+      {/* ✅ Modals (globally accessible) */}
       <SignInModal
         isOpen={showSignIn}
         onClose={() => setShowSignIn(false)}

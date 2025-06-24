@@ -6,7 +6,7 @@ import Footer from './Footer'
 import './AllBlogs.css'
 const API_BASE = import.meta.env.VITE_API_BASE
 
-export default function AllBlogs() {
+export default function AllBlogs({ user, onSignInClick, onProfileClick, onLogout }) {
   const [posts, setPosts] = useState([])
   const [page, setPage] = useState(1)
   const [hasMore, setHasMore] = useState(true)
@@ -42,7 +42,12 @@ export default function AllBlogs() {
 
   return (
     <>
-      <Header />
+      <Header 
+       user={user}
+        onSignInClick={onSignInClick}
+        onProfileClick={onProfileClick}
+        onLogout={onLogout}
+      />
       <section className="all-blogs section">
         <div className="container">
           <div className="section-header">
@@ -81,14 +86,18 @@ export default function AllBlogs() {
               )
             })}
           </div>
-
+{loading && (
+         <div className="spinner" />
+        )}
           {!loading && hasMore && (
+            
             <button
               className="btn outline"
               onClick={() => setPage(prev => prev + 1)}
             >
               View More
             </button>
+            
           )}
         </div>
       </section>

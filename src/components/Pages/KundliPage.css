@@ -1,0 +1,270 @@
+/* ===== Breadcrumb ===== */
+.breadcrumb {
+  padding: 12px 20px;
+  font-size: 0.9rem;
+  background: #fafafa;
+}
+.breadcrumb a {
+  color: #555;
+  text-decoration: none;
+}
+.breadcrumb strong {
+  color: #FF6B35;
+}
+
+/* ===== Overall page wrapper ===== */
+.kundli-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ===== Top section (banner + icons) ===== */
+.kundli-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  background: #fff5e6;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 40px;
+}
+
+/* ===== Kundli banner ===== */
+.kundli-banner {
+  flex: 1 1 480px;
+  max-width: 480px;
+  position: relative;
+}
+.kundli-banner img {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+}
+
+/* ===== Scrollable text under banner ===== */
+.kundli-banner-text {
+  max-width: 100%;
+  height: 150px;
+  margin-top: 12px;
+  padding: 12px;
+  background: #fff;
+  border: 1px solid #ffccaa;
+  border-radius: 0 0 12px 12px;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+.kundli-banner-text::-webkit-scrollbar {
+  width: 6px;
+}
+.kundli-banner-text::-webkit-scrollbar-thumb {
+  background: #ff6b35;
+  border-radius: 3px;
+}
+
+/* ===== Kundli-icon grid beside banner ===== */
+.kundli-icons-grid {
+  flex: 1 1 300px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
+  background: #fff5e6;
+  padding: 16px;
+  border-radius: 12px;
+}
+.kundli-icon-card {
+  text-align: center;
+  background: #fff;
+  border: 1px solid #ffccaa;
+  border-radius: 8px;
+  padding: 12px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.kundli-icon-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.kundli-icon-card img {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 8px;
+}
+.kundli-icon-card span {
+  display: block;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* -------------------------------------
+   Wrapper to hold the bg image
+-------------------------------------- */
+.form-bg-wrapper {
+  position: relative;
+  background: url('/assets/kundaliform-bg.png') no-repeat center/cover;
+  padding: 80px 0;
+}
+
+/* -------------------------------------
+   Inner white card (the form box)
+-------------------------------------- */
+.form-bg-wrapper .custom-kundli-form {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 32px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  position: relative;
+  z-index: 1;
+  color: #333;
+}
+
+/* ===== The form grid ===== */
+.kundli-form {
+  display: block;
+}
+
+/* each form-row becomes its own two-column grid */
+.kundli-form .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+/* Field wrapper */
+.kundli-form .field {
+  display: flex;
+  flex-direction: column;
+}
+
+.kundli-form label {
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+}
+
+/* Text & date inputs */
+.kundli-form input[type="text"],
+.kundli-form input[type="date"] {
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  box-sizing: border-box;
+}
+
+/* ===== React-Time-Picker overrides ===== */
+.tob-picker {
+  font-size: 0.95rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0 14px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+.react-time-picker__wrapper {
+  border: none !important;
+}
+.react-time-picker__inputGroup {
+  background: transparent;
+}
+.react-clock {
+  /* customize clock colors here if needed */
+}
+
+/* ===== Gender radios ===== */
+.radios {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 12px;
+}
+.radios label {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.radios input {
+  transform: scale(1.1);
+}
+
+/* ===== Submit button ===== */
+.btn-get-kundli {
+  grid-column: 1 / -1;
+  margin-top: 24px;
+  padding: 14px;
+  background: #FF6B35;
+  color: white;
+  font-size: 1.05rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-get-kundli:hover {
+  background: #e65a28;
+}
+
+/* ===== Content Section ===== */
+.kundli-content {
+  margin-top: 30px;
+  padding: 20px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 992px) {
+  .kundli-top {
+    flex-direction: column;
+    padding: 16px;
+  }
+  .kundli-banner,
+  .kundli-icons-grid {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  /* tighten the form background wrapper */
+  .form-bg-wrapper {
+    padding: 40px 0;
+  }
+  /* shrink the inner card */
+  .form-bg-wrapper .custom-kundli-form {
+    margin: 0 16px;
+    padding: 24px;
+  }
+  /* stack inputs */
+  .kundli-form .form-row {
+    grid-template-columns: 1fr; 
+  }
+  /* full-width button */
+  .btn-get-kundli {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .breadcrumb {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+  .kundli-page {
+    padding: 12px;
+  }
+  .form-bg-wrapper {
+    padding: 20px 0;
+  }
+  .form-bg-wrapper .custom-kundli-form {
+    margin: 0 8px;
+    padding: 16px;
+  }
+  .custom-kundli-form h2 {
+    font-size: 1.3rem;
+  }
+}

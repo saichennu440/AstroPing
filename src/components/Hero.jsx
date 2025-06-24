@@ -23,6 +23,9 @@ export default function Hero() {
     if(label === 'Horoscope'){
       navigate('/horoscope')
     }
+    if(label === 'Kundli'){
+      navigate('/panchang/kundli')
+    }
   };
 
   return (
