@@ -32,6 +32,10 @@
   /* leave a bit of top margin so header never covers content */
   margin-top: 24px;
 }
+.variant-card .icon-placeholder {
+  font-size: 1.6rem;
+  margin-bottom: 0.3rem;
+}
 
 /* ==== Top Panel ==== */
 .detail-top {
@@ -87,6 +91,7 @@
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   transform: translateY(-3px);
   border-color: #FF6B35;
+color:#FF6B35;
 }
 
 /* ==== Calendar Buttons ==== */

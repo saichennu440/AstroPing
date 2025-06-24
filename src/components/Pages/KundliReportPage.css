@@ -1,8 +1,8 @@
-===== KundliReportPage.css =====
+/* src/pages/KundliReportPage.css */
 
 .kundli-report-page {
-  max-width: 1200px;
-  margin-top:50px ;
+  max-width: 1400px;
+  margin: 0 auto;
   padding: 20px;
 }
 
@@ -74,7 +74,251 @@
   white-space: pre-wrap;
 }
 
-@media (max-width: 768px) {
+/* ===== Basic Details ===== */
+.basic-details {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  padding: 24px;
+  margin-bottom: 24px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+.basic-details h2 {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+  width: 100%;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
+.object-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.object-section ul li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+.object-section ul li:last-child {
+  border-bottom: none;
+}
+.object-section ul li strong {
+  color: #444;
+  flex: 1;
+}
+.object-section ul li span {
+  flex: 1;
+  text-align: right;
+  color: #555;
+}
+
+/* ===== Predictions & Divisional Charts ===== */
+.chart-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 12px;
+}
+.chart-images img {
+  width: calc(50% - 8px);
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+.divisional-charts h3 {
+  margin-top: 24px;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+/* ===== Positions (Card Grid) ===== */
+.positions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.positions h2 {
+  grid-column: 1 / -1;
+  margin-bottom: 12px;
+  font-size: 1.4rem;
+  color: #333;
+}
+.positions ul {
+  display: contents;
+}
+.positions li {
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.positions li strong {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #444;
+  text-transform: uppercase;
+}
+.positions li span {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* ===== Dosha ===== */
+.dosha-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.dosha-list ul li {
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+}
+
+/* ===== Dasha ===== */
+/* ===== Interactive Dasha Accordion ===== */
+.dasha {
+  margin-bottom: 24px;
+}
+.dasha h2 {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+  color: #333;
+}
+
+/* Hide native list bullets */
+.dasha ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Each dasha period becomes a label + hidden input */
+.dasha-item {
+  margin-bottom: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Hidden checkbox */
+.dasha-item input {
+  display: none;
+}
+
+/* The header bar */
+.dasha-item label {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: #f9f9f9;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.dasha-item label:hover {
+  background: #f0f0f0;
+}
+
+/* The plus/minus icon */
+.dasha-item label::after {
+  content: '+';
+  font-size: 1.2rem;
+  transition: transform 0.2s;
+}
+.dasha-item input:checked + label::after {
+  content: '−';
+  transform: rotate(180deg);
+}
+
+/* The detail panel */
+.dasha-item .content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  background: #fff;
+}
+.dasha-item input:checked ~ .content {
+  max-height: 500px; /* big enough to show your content */
+}
+
+/* Inside the panel */
+.dasha-item .content ul {
+  padding: 12px 16px;
+}
+.dasha-item .content li {
+  padding: 6px 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 0.95rem;
+}
+.dasha-item .content li:last-child {
+  border-bottom: none;
+}
+
+/* ===== Remedies (Ashtakvarga) ===== */
+.remedies table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+.remedies th,
+.remedies td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  font-size: 0.95rem;
+}
+.remedies th {
+  background: #f5f5f5;
+}
+
+/* ===== Responsive Breakpoints ===== */
+@media (min-width: 768px) {
+  /* Basic Details two-columns */
+  .basic-details {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Chart images three across */
+  .chart-images img {
+    width: calc(33.333% - 10.666px);
+  }
+
+  /* Dasha two-columns */
+  .dasha {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Basic Details three-columns */
+  .basic-details {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Chart images four across if many */
+  .chart-images img {
+    width: calc(25% - 12px);
+  }
+
+  /* Remedies table font increase */
+  .remedies th,
+  .remedies td {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 767px) {
   .report-tabs {
     gap: 8px;
   }
@@ -84,5 +328,21 @@
   }
   .report-banner h1 {
     font-size: 1.5rem;
+    left: 16px;
+    bottom: 12px;
+  }
+  .chart-images {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 479px) {
+  /* Collapse tabs into a scrollable strip */
+  .report-tabs {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .report-tabs button {
+    flex: 0 0 auto;
   }
 }
