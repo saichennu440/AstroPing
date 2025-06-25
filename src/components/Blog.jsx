@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import Header from './Header'
-import Footer from './Footer'
+
 import './Blog.css'
 
 const API_BASE = import.meta.env.VITE_API_BASE
 const PLACEHOLDER_IMAGE = '/images/placeholder.png' // ensure this path serves a valid image
 
-export default function Blog() {
+export default function Blog({ user, onSignInClick, onProfileClick, onLogout }) {
   const [posts, setPosts] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
@@ -57,7 +56,7 @@ export default function Blog() {
 
   return (
     <>
-      <Header />
+      
       <section className="blog">
         <div className="container">
           <div className="section-header">

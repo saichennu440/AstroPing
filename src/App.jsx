@@ -91,7 +91,7 @@ function App() {
       <Stats />
       <Astrologers />
       <WhyHoroscope />
-      <Footer />
+      <Footer/>
     </main>
   )
 
@@ -120,9 +120,21 @@ function App() {
     />
   }
 />
-<Route path="/DeleteAccount" element={<DeleteAccount />} />
 
-<Route path="/DeleteForm" element={<DeleteForm />} />
+<Route path="/DeleteAccount" element={<DeleteAccount 
+ user={currentUser}
+      onSignInClick={() => setShowSignIn(true)}
+      onProfileClick={() => setShowProfile(true)}
+      onLogout={handleLogout}
+/>} />
+
+<Route path="/DeleteForm" element={<DeleteForm 
+ user={currentUser}
+      onSignInClick={() => setShowSignIn(true)}
+      onProfileClick={() => setShowProfile(true)}
+      onLogout={handleLogout}
+/>} />
+
         <Route path="/astrologers" element={<AllAstrologers 
         user={currentUser}
       onSignInClick={() => setShowSignIn(true)}
