@@ -33,9 +33,9 @@ export default function SignDetailPage({
     setError('')
    
     axios
-      .post(`${API_BASE}/horoscope/get-horoscope`, {
+      .get(`${API_BASE}/horoscope/get-horoscope`, {
         // fetch all signs for the given day
-        sign: title, day
+        // sign: title, day
       })
       .then(res => {
         const list = res.data.horoscopes
@@ -182,7 +182,7 @@ const variantCards = [
                 ))}
               </div>
 
-              <p className="remedy">
+              {/* <p className="remedy">
                 <strong>Lucky Color:</strong>{' '}
                 <span
                   className="color-swatch"
@@ -204,7 +204,7 @@ const variantCards = [
                 {horoscope.totalScore != null
                   ? `${horoscope.totalScore}%`
                   : '—'}
-              </p>
+              </p> */}
             </section>
 
             {/* General remedies */}

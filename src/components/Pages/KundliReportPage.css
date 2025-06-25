@@ -288,16 +288,6 @@
   .basic-details {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  /* Chart images three across */
-  .chart-images img {
-    width: calc(33.333% - 10.666px);
-  }
-
-  /* Dasha two-columns */
-  .dasha {
-    grid-template-columns: 1fr 1fr;
-  }
 }
 
 @media (min-width: 1024px) {
@@ -333,7 +323,15 @@
   }
   .chart-images {
     flex-direction: column;
+    margin-left:100px;
+    
   }
+  .chart-images img {
+  width: calc(80% - 8px);
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
 }
 
 @media (max-width: 479px) {

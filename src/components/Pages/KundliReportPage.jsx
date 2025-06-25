@@ -21,13 +21,13 @@ const TABS = [
 ]
 
 const API_MAP = {
-  basic:       { url: '/user/getUserBasicDetails',  body: d => ({ userId: d.userId }) },
+  basic:       { url: '/user/getUserBasicDetails',  body: d => ({ userId: d.userId, lang: 'en' }) },
   predictions: { url: '/user/getKundliChart',       body: d => ({ userId: d.userId, chart_type: 'navamasaChart', lang: 'en' }) },
-  positions:   { url: '/user/getPlanets',           body: d => ({ userId: d.userId }) },
-  chart:       { url: '/user/getDivisionalCharts',  body: d => ({ userId: d.userId }) },
+  positions:   { url: '/user/getPlanets',           body: d => ({ userId: d.userId, lang: 'en' }) },
+  chart:       { url: '/user/getDivisionalCharts',  body: d => ({ userId: d.userId, lang: 'en' }) },
   dosha:       { url: '/user/getDoshas',            body: d => ({ userId: d.userId, lang: 'en' }) },
   dasha:       { url: '/user/getDashas',            body: d => ({ userId: d.userId, lang: 'en', isFrom: 'kotlin' }) },
-  remedies:    { url: '/user/getAshtakvarga',        body: d => ({ userId: d.userId }) }
+  remedies:    { url: '/user/getAshtakvarga',        body: d => ({ userId: d.userId, lang: 'en' }) }
 }
 
 export default function KundliReportPage({ user, onSignInClick, onProfileClick, onLogout }) {
@@ -55,28 +55,42 @@ export default function KundliReportPage({ user, onSignInClick, onProfileClick, 
   }, [activeTab, formData])
 
   // Renderers for each tab
-  const renderBasic = () => {
-    const details = data.basic?.userBasicDetails
-    if (!details) return <p>No basic details available.</p>
-    const { birthDetails, panchangDetails, avakadaDetails } = details
-    return (
-      <div className="basic-details">
-        {['Birth Details', 'Panchang Details', 'Avakada Details'].map((section, idx) => {
-          const obj = [birthDetails, panchangDetails, avakadaDetails][idx]
-          return (
-            <div key={section} className="object-section">
-              <h2>{section}</h2>
-              <ul>
-                {Object.entries(obj).map(([k,v]) => (
-                  <li key={k}><strong>{k.replace(/([A-Z])/g, ' $1')}:</strong> {v}</li>
-                ))}
-              </ul>
-            </div>
-          )
-        })}
-      </div>
-    )
-  }
+ const renderBasic = () => {
+  const details = data.basic?.userBasicDetails;
+  if (!details) return <p>No basic details available.</p>;
+
+  const { birthDetails, panchangDetails, avakadaDetails } = details;
+
+  return (
+    <div className="basic-details">
+      {['Birth Details', 'Panchang Details', 'Avakada Details'].map((section, idx) => {
+        const obj = [birthDetails, panchangDetails, avakadaDetails][idx];
+        return (
+          <div key={section} className="object-section">
+            <h2>{section}</h2>
+            <ul>
+              {Object.entries(obj).map(([k, v]) => {
+                let value = v;
+
+                // Format ISO date strings like 2000-07-15T00:00:00.000Z
+                if (k === 'dateOfBirth' && typeof v === 'string') {
+                  value = v.slice(0, 10); // Only YYYY-MM-DD
+                }
+
+                return (
+                  <li key={k}>
+                    <strong>{k.replace(/([A-Z])/g, ' $1')}:</strong> {value}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
 
   const renderPredictions = () => {
     const chart = data.predictions?.userKundiChart?.navamasaChart
@@ -205,7 +219,7 @@ export default function KundliReportPage({ user, onSignInClick, onProfileClick, 
   }
 
   const renderContent = () => {
-    if (loading) return <p>Loading {TABS.find(t=>t.key===activeTab).label}…</p>
+    if (loading) return <p> <div className="spinner" /> {TABS.find(t=>t.key===activeTab).label}…</p>
     if (error)   return <p className="error">Error: {error}</p>
     switch (activeTab) {
       case 'basic':       return renderBasic()
