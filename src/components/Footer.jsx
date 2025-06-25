@@ -31,8 +31,8 @@ const Footer = () => {
             <div className="footer-section">
               <h3>Horoscope</h3>
               <ul>
-                <li><a href="#">Daily Horoscope</a></li>
-                <li><a href="#">Delete Account</a></li>
+                <li><a href="/horoscope">Daily Horoscope</a></li>
+                <li><a href="/DeleteAccount">Delete Account</a></li>
               </ul>
             </div>
             

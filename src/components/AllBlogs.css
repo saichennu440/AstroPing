@@ -4,13 +4,14 @@
 .all-blogs.section {
   padding: 60px 0;
   background: #fff;
-  margin-top:80px;
+  margin-top: 80px;
 }
 
 .all-blogs .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+  box-sizing: border-box;
 }
 
 /* ===== Section Header ===== */
@@ -27,26 +28,11 @@
   color: #222;
 }
 
-.all-blogs .view-all {
-  font-size: 0.95rem;
-  color: #FF6B35;
-  border: 1px solid #FF6B35;
-  padding: 6px 14px;
-  border-radius: 20px;
-  text-decoration: none;
-  transition: background 0.2s, color 0.2s;
-}
-
-.all-blogs .view-all:hover {
-  background: rgba(255, 107, 53, 0.1);
-}
-
 /* ===== Blog Grid ===== */
 .all-blogs .blog-grid {
   display: grid;
   gap: 24px;
-  /* 3 columns on desktop */
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
 /* ===== Blog Card ===== */
@@ -69,11 +55,12 @@
 .all-blogs .blog-image {
   position: relative;
   width: 100%;
-  padding-top: 56.25%; /* 16:9 aspect */
+  padding-top: 56.25%; /* 16:9 aspect ratio */
   overflow: hidden;
 }
 
 .all-blogs .blog-image img {
+  display: block;             /* ensure no inline quirks */
   position: absolute;
   top: 0;
   left: 0;
@@ -82,11 +69,12 @@
   object-fit: cover;
 }
 
+/* Category badge */
 .all-blogs .blog-category {
   position: absolute;
   bottom: 12px;
   left: 12px;
-  /* background: rgba(0,0,0,0.7); */
+  background: rgba(0,0,0,0.6);
   color: #fff;
   padding: 4px 8px;
   border-radius: 4px;
@@ -132,6 +120,27 @@
   display: inline-block;
 }
 
+/* ===== Error & Spinner ===== */
+.all-blogs .error {
+  color: #e74c3c;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.all-blogs .spinner {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #eee;
+  border-top-color: #FF6B35;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 40px auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
 /* ===== “View More” Button ===== */
 .all-blogs .btn.outline {
   display: inline-block;
@@ -159,15 +168,13 @@
 
 @media (max-width: 768px) {
   .all-blogs.section {
-    padding: 0px 0;
-    
+    padding: 40px 0;
   }
   .all-blogs .section-header {
     flex-direction: column;
     gap: 20px;
     text-align: center;
-    margin-bottom:15px;
-    
+    margin-bottom: 20px;
   }
   .all-blogs .blog-grid {
     grid-template-columns: 1fr;

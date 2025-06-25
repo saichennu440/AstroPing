@@ -32,7 +32,8 @@ import AllAstrologers from './components/AllAstrologers'
 import KundliPage from './components/Pages/KundliPage'
 import KundliReportPage from './components/Pages/KundliReportPage'
 import cooming from './components/cooming'
-
+import DeleteAccount from './components/DeleteAccount'
+import DeleteForm from './components/DeleteForm'
 import './components/SignInForm.css'
 import './App.css'
 
@@ -90,7 +91,7 @@ function App() {
       <Stats />
       <Astrologers />
       <WhyHoroscope />
-      
+      <Footer />
     </main>
   )
 
@@ -119,6 +120,9 @@ function App() {
     />
   }
 />
+<Route path="/DeleteAccount" element={<DeleteAccount />} />
+
+<Route path="/DeleteForm" element={<DeleteForm />} />
         <Route path="/astrologers" element={<AllAstrologers 
         user={currentUser}
       onSignInClick={() => setShowSignIn(true)}

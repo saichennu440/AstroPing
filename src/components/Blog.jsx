@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import './Blog.css'
 import { Link } from 'react-router-dom'
+import Header from './Header'
+import Footer from './Footer'
+import './Blog.css'
+
 const API_BASE = import.meta.env.VITE_API_BASE
+const PLACEHOLDER_IMAGE = '/images/placeholder.png' // ensure this path serves a valid image
 
 export default function Blog() {
   const [posts, setPosts] = useState([])
@@ -35,11 +39,12 @@ export default function Blog() {
     return (
       <section className="blog">
         <div className="container">
-         <div className="spinner" />
+          <div className="spinner" />
         </div>
       </section>
     )
   }
+
   if (error) {
     return (
       <section className="blog">
@@ -51,47 +56,63 @@ export default function Blog() {
   }
 
   return (
-    <section className="blog">
-      <div className="container">
-        <div className="section-header">
-          <h2 className="section-title">Blogs</h2>
-          <Link to="/blogs" className="view-all">
-            View All
-          </Link>
-        </div>
+    <>
+      <Header />
+      <section className="blog">
+        <div className="container">
+          <div className="section-header">
+            <h2 className="section-title">Blogs</h2>
+            <Link to="/blogs" className="view-all">
+              View All
+            </Link>
+          </div>
 
-        <div className="blog-grid">
-          {posts.map((post, index) => {
-            // ensure full URL for image
-            const imgSrc =
-              post.image?.startsWith('http')
-                ? post.image
-                : `${API_BASE}${post.image}`
-            return (
-              <article key={index} className="blog-card">
-                <div className="blog-image">
-                  <img src={imgSrc} alt={post.title} />
-                  {post.category && (
-                    <div className="blog-category">{post.category}</div>
-                  )}
-                </div>
-                <div className="blog-content">
-                  <h3>{post.title}</h3>
-                  <div className="blog-meta">
-                    {post.author && (
-                      <span className="author">By {post.author}</span>
+          <div className="blog-grid">
+            {posts.map((post, index) => {
+              // Use 'blog_image' field from API
+              const rawPath = post.blog_image || ''
+              const imgSrc = rawPath
+                ? rawPath.startsWith('http')
+                  ? rawPath
+                  : `${API_BASE.replace(/\/+$/, '')}/${rawPath.replace(/^\/+/, '')}`
+                : ''
+
+              return (
+                <article key={index} className="blog-card">
+                  <div className="blog-image">
+                    {imgSrc ? (
+                      <img
+                        src={imgSrc}
+                        alt={post.blog_name}
+                        onError={e => {
+                          if (e.currentTarget.src !== PLACEHOLDER_IMAGE) {
+                            e.currentTarget.onerror = null
+                            e.currentTarget.src = PLACEHOLDER_IMAGE
+                          }
+                        }}
+                      />
+                    ) : (
+                      <div className="no-image">No Image Available</div>
                     )}
-                    {post.date && <span className="date">{post.date}</span>}
-                    {post.readTime && (
-                      <span className="read-time">{post.readTime}</span>
+                    {post.category && (
+                      <div className="blog-category">{post.category}</div>
                     )}
                   </div>
-                </div>
-              </article>
-            )
-          })}
+                  <div className="blog-content">
+                    <h3>{post.blog_name}</h3>
+                    <div className="blog-meta">
+                      {post.author && <span className="author">By {post.author}</span>}
+                      {post.date && <span className="date">{post.date}</span>}
+                      {post.readTime && <span className="read-time">{post.readTime}</span>}
+                    </div>
+                  </div>
+                </article>
+              )
+            })}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+ 
+    </>
   )
 }

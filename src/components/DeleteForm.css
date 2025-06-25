@@ -1,0 +1,99 @@
+/* Container Styling */
+.containerr {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 30px 25px;
+  background: #fdfdfd;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-top:120px;
+
+}
+
+/* Header Styling */
+.containerr h2 {
+  font-size: 26px;
+  color: #2c3e50;
+  margin-bottom: 8px;
+}
+
+/* Instructions */
+.instructionss {
+  font-size: 15px;
+  color: #666;
+  margin-bottom: 25px;
+}
+
+/* Message Styling */
+.messagess {
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #2e86de;
+  font-weight: 500;
+}
+
+/* Form Styling */
+.delete-formm {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Labels */
+.delete-formm label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #444;
+  text-align: left;
+}
+
+/* Input Fields */
+.delete-formm input {
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fafafa;
+  transition: all 0.3s ease;
+}
+
+.delete-formm input:focus {
+  border-color: #3498db;
+  background-color: #fff;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+  outline: none;
+}
+
+/* Submit Button */
+.submit-btnn {
+  background: linear-gradient(135deg, #4caf50, #388e3c);
+  color: #fff;
+  padding: 12px;
+  font-size: 17px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.submit-btnn:hover {
+  background: linear-gradient(135deg, #45a049, #2e7d32);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Responsive */
+@media (max-width: 540px) {
+  .containerr {
+    margin: 30px 15px;
+    padding: 20px;
+  }
+
+  .submit-btnn {
+    font-size: 16px;
+    padding: 10px;
+  }
+}
